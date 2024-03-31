@@ -1,8 +1,6 @@
-import React, { useState } from "react";
 import "./Login.css"; // Make sure to create a corresponding CSS file
 import abstractArt from "/Users/omnisceo/Desktop/LucidTrade_Project/lucidtrade/src/photos/LoginPic1.png"; // Correct path to your abstract art image
 import logoIcon from "/Users/omnisceo/Desktop/LucidTrade_Project/lucidtrade/src/photos/transparent.svg";
-import { Eye, EyeOff } from "react-ionicons";
 
 const Login = () => {
   return (
@@ -26,14 +24,18 @@ const Login = () => {
               <input type="password" placeholder="Password" required />
           </div>
 
-          
+
           <div className="terms-container">
             <input type="checkbox" id="terms" />
             <label htmlFor="terms">I agree to terms & conditions</label>
           </div>
+
+
           <button type="submit" className="login-button">
             Login
           </button>
+
+
           <div className="separator">Or</div>
           <button type="button" className="google-button">
             Login with Google
