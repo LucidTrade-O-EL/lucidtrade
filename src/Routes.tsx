@@ -8,8 +8,8 @@ import SignUp from "./Signup";
 const AppRoutes = () => (
   <Router>
     <Routes>
-      {/* <Route path="/" element={<Login />} /> */}
-      <Route path="/" element={<SignUp />} />
+      <Route path="/" element={<Login />} />
+      {/* <Route path="/" element={<SignUp />} /> */}
     </Routes>
   </Router>
 );
