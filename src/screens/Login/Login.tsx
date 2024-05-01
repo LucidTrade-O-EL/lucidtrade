@@ -1,9 +1,12 @@
 import React, { FormEvent } from 'react';
 import "./Login.css"; // Make sure to create a corresponding CSS file
-import abstractArt from "/Users/omnisceo/Desktop/LucidTrade_Project/lucidtrade/src/photos/LoginPic1.png"; // Image path
-import logoIcon from "/Users/omnisceo/Desktop/LucidTrade_Project/lucidtrade/src/photos/transparent.svg"; // Image path
+import abstractArt from "../../../src/photos/LoginPic1.png"; // Image path
+import logoIcon from "../../../src/photos/transparent.svg"; // Image path
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+  const navigate = useNavigate();
   // Function to handle form submission
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent the default form submission behavior
@@ -31,6 +34,7 @@ const Login = () => {
 
       const data = await response.json(); // Assuming the server responds with JSON
       console.log(data); // Logging the response to the console
+      navigate('/signup')
 
       // Here you could handle redirection or update local state based on the response
     } catch (error) {
@@ -50,11 +54,11 @@ const Login = () => {
         <form className="login-form-emailAndPassword" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <h2 className="EmailPassword">Email Address</h2>
-            <input name="email" type="email" placeholder="Email Address" required />
+            <input name="email" type="email" placeholder="Email Address" required/>
           </div>
           <div className="input-wrapper">
             <h2 className="EmailPassword">Password</h2>
-            <input name="password" type="password" placeholder="Password" required />
+            <input name="password" type="password" placeholder="Password" required/>
           </div>
 
           <div className="terms-container">
