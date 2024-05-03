@@ -6,6 +6,7 @@ import SignUp from "../screens/SignUp/Signup";
 import SetPassword from "../screens/Password/SetPassword/SetPassword";
 import PasswordResetComplete from "../screens/Password/PasswordResetComplete/PasswordResetComplete";
 import ForgotPassword from "../screens/Password/ForgetPassword/ForgotPassword";
+import Verify from "../screens/Verify/Verify";
 
 
 const AppRoutes = () => (
@@ -16,6 +17,7 @@ const AppRoutes = () => (
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/set-password" element={<SetPassword />} />
       <Route path="/reset-complete" element={<PasswordResetComplete />} />
+      <Route path="/verify" element={<Verify />} />
     </Routes>
   </Router>
 );

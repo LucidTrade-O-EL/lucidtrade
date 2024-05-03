@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import React, { useState } from 'react';
 import "./ForgotPassword.css"; // Make sure to create a corresponding CSS file
 import abstractArt from "../../../../src/photos/ForgotPassword.png"; // Image path
 import logoIcon from "../../../../src/photos/transparent.svg"; // Image path
