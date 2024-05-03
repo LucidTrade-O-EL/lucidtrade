@@ -32,19 +32,22 @@ const SignUp = () => {
       confirmPassword: target.confirmPassword.value
     };
 
+
+    console.log("form Data", formData)
     // Sending the POST request to your API
     try {
-      const response = await fetch(' http://localhost:8080/api/auth/register', { 
+      const response = await fetch(' http://localhost:8080/api/auth/code', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({ phoneNumber: formData.phoneNumber })
+
       });
 
       const data = await response.json(); // Assuming the server responds with JSON
       console.log(data); // Logging the response to the console
-      navigate('/forgot-password');
+      navigate('/verify', { state: formData });
 
 
       // You can redirect the user or clear the form here, depending on your application's needs
