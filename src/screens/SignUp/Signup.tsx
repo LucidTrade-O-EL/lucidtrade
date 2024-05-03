@@ -1,9 +1,14 @@
 import React, { FormEvent } from 'react';
 import "./SignUp.css"; // Make sure to create a corresponding CSS file
-import abstractArt from "/Users/omnisceo/Desktop/LucidTrade_Project/lucidtrade/src/photos/LoginPic1.png";
-import logoIcon from "/Users/omnisceo/Desktop/LucidTrade_Project/lucidtrade/src/photos/transparent.svg";
+import abstractArt from "../../../src/photos/LoginPic1.png";
+import logoIcon from "../../../src/photos/transparent.svg";
+import { useNavigate } from "react-router-dom";
+
 
 const SignUp = () => {
+
+  const navigate = useNavigate();
+
   // Function to handle form submission with proper TypeScript typing
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent the default form submission behavior
@@ -39,6 +44,8 @@ const SignUp = () => {
 
       const data = await response.json(); // Assuming the server responds with JSON
       console.log(data); // Logging the response to the console
+      navigate('/forgot-password');
+
 
       // You can redirect the user or clear the form here, depending on your application's needs
     } catch (error) {
@@ -47,15 +54,15 @@ const SignUp = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-form">
-        <header className="login-header">
+    <div className="signup-container">
+      <div className="signup-form">
+        <header className="signup-header">
           <img src={logoIcon} alt="Logo" className="logo" />
           <h1>Welcome to LucidTrade</h1>
           <p>Kindly fill in your details below to create an account</p>
         </header>
 
-        <form className="login-form-emailAndPassword" onSubmit={handleSubmit}>
+        <form className="signup-form-emailAndPassword" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <h2 className="EmailPassword">First Name</h2>
             <input name="firstName" type="text" placeholder="First Name" required />
@@ -86,17 +93,17 @@ const SignUp = () => {
             <label htmlFor="terms">I agree to terms & conditions</label>
           </div>
 
-          <button type="submit" className="login-button">Login</button>
+          <button type="submit" className="signup-button">Create Account</button>
 
           <div className="separator">Or</div>
-          <button type="button" className="google-button">Login with Google</button>
+          <button type="button" className="google-button">Create with Google</button>
         </form>
 
-        <footer className="login-footer">
-          <p>Don't have an account yet? <a href="/signup">Create Account</a></p>
+        <footer className="signup-footer">
+          <p>Already have an account? <a href="/">Log In</a></p>
         </footer>
       </div>
-      <div className="login-graphics">
+      <div className="signup-graphics">
         <img src={abstractArt} alt="Abstract Art" />
       </div>
     </div>

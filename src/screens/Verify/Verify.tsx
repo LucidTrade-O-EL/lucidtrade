@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, FormEvent, ChangeEvent } from 'react';
 import "./Verify.css";
-import abstractArt from "/Users/omnisceo/Desktop/LucidTrade_Project/lucidtrade/src/photos/LoginPic1.png";
-import logoIcon from "/Users/omnisceo/Desktop/LucidTrade_Project/lucidtrade/src/photos/transparent.svg";
+import abstractArt from "../../../src/photos/LoginPic1.png";
+import logoIcon from "../../../src/photos/transparent.svg";
 
 const Verify = () => {
   const [timer, setTimer] = useState(390); // 6 minutes and 30 seconds

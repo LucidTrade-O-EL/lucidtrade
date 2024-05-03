@@ -41,7 +41,7 @@
   .logo-container {
     justify-content: flex-start;
     align-self: flex-start;
-    background-image: url('/Users/omnisceo/Desktop/LucidTrade_Project/lucidtrade/src/photos/transparent.svg'); /* Adjust the path as necessary */
+    background-image: url('../../../src/photos/transparent.svg'); /* Adjust the path as necessary */
     background-size: contain; /* This ensures the logo fits within the container without distortion */
     background-repeat: no-repeat;
     background-position: center; /* Centers the logo within the container */

@@ -1,9 +1,12 @@
 import React, { FormEvent } from 'react';
-import "./PasswordRest.css"; // Make sure to create a corresponding CSS file
-import abstractArt from "/Users/omnisceo/Desktop/LucidTrade_Project/lucidtrade/src/photos/LoginPic1.png"; // Image path
-import logoIcon from "/Users/omnisceo/Desktop/LucidTrade_Project/lucidtrade/src/photos/transparent.svg"; // Image path
+import "./Login.css"; // Make sure to create a corresponding CSS file
+import abstractArt from "../../../src/photos/LoginPic1.png"; // Image path
+import logoIcon from "../../../src/photos/transparent.svg"; // Image path
+import { useNavigate } from 'react-router-dom';
 
-const PasswordRest = () => {
+const Login = () => {
+
+  const navigate = useNavigate();
   // Function to handle form submission
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent the default form submission behavior
@@ -31,6 +34,7 @@ const PasswordRest = () => {
 
       const data = await response.json(); // Assuming the server responds with JSON
       console.log(data); // Logging the response to the console
+      navigate('/signup')
 
       // Here you could handle redirection or update local state based on the response
     } catch (error) {
@@ -43,14 +47,34 @@ const PasswordRest = () => {
       <div className="login-form">
         <header className="login-header">
           <img src={logoIcon} alt="Logo" className="logo" />
-          <h1>Password Rest</h1>
-          <p>Your password have been successfully Reset. Click below to login.</p>
+          <h1>Welcome Back</h1>
+          <p>Kindly fill in your details below to log in to your account</p>
         </header>
 
         <form className="login-form-emailAndPassword" onSubmit={handleSubmit}>
+          <div className="input-wrapper">
+            <h2 className="EmailPassword">Email Address</h2>
+            <input name="email" type="email" placeholder="Email Address" required/>
+          </div>
+          <div className="input-wrapper">
+            <h2 className="EmailPassword">Password</h2>
+            <input name="password" type="password" placeholder="Password" required/>
+          </div>
 
-          <button type="submit" className="login-button">Continue</button>
+          <div className="terms-container">
+            <input type="checkbox" id="terms" />
+            <label htmlFor="terms">I agree to terms & conditions</label>
+          </div>
+
+          <button type="submit" className="login-button">Login</button>
+
+          <div className="separator">Or</div>
+          <button type="button" className="google-button">Login with Google</button>
         </form>
+
+        <footer className="login-footer">
+          <p>Don't have an account yet? <a href="/signup">Create Account</a></p>
+        </footer>
       </div>
       <div className="login-graphics">
         <img src={abstractArt} alt="Abstract Art" />
@@ -59,4 +83,4 @@ const PasswordRest = () => {
   );
 };
 
-export default PasswordRest;
+export default Login;
