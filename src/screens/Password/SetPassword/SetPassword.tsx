@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import "./SetPassword.css"; // Make sure to create a corresponding CSS file
 import abstractArt from "../../../../src/photos/ForgotPassword.png"; // Image path
 import logoIcon from "../../../../src/photos/transparent.svg"; // Image path
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { API, ApiData, NavigateApiData } from '../../../api';
+import { ScreenRoutes } from '../../../App/Routes';
 
 function SetPassword() {
-  const navigate = useNavigate();
+  const apiInstance = new API();
+  const navigation = useNavigate();
   const [password, setPassword] = useState('');
   const [secondPassword, setSecondPassword] = useState('');
+  const location = useLocation();
+  const email = location.state.email;
+
 
   const handlePasswordChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setPassword(e.target.value);
@@ -17,11 +23,27 @@ function SetPassword() {
     setSecondPassword(e.target.value);
   };
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    setPassword('');
-    setSecondPassword('');
-    navigate('reset-complete')
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    const target = event.target as typeof event.target & {
+      email: { value: string };
+      password: { value: string };
+    };
+
+    const resetData: ApiData = {
+      email: email,
+      password: target.password.value
+    };
+
+    const apiData: NavigateApiData = {
+      navigate: true,
+      destination: ScreenRoutes.ResetComplete,
+      navigation: navigation
+    }
+
+    apiInstance.post('auth/reset/password', resetData, apiData, 'ForgotPassword');
+
   };
 
   return (
@@ -43,7 +65,7 @@ function SetPassword() {
               onChange={handlePasswordChange}
               required
             />
-             <h2 className="email">Re-enter Password</h2>
+            <h2 className="email">Re-enter Password</h2>
             <input
               name="password"
               type="password"

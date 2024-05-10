@@ -9,15 +9,16 @@ import "./Verify.css";
 import abstractArt from "../../../src/photos/LoginPic1.png";
 import logoIcon from "../../../src/photos/transparent.svg";
 import { useLocation, useNavigate } from "react-router-dom";
+import { API, ApiData, NavigateApiData } from "../../api";
+import { ScreenRoutes } from "../../App/Routes";
 
 const Verify = () => {
+  const apiInstance = new API();
   const location = useLocation();
-  const navigate = useNavigate();
+  const navigation = useNavigate();
   const formData = location.state;
   const [timer, setTimer] = useState(390); // 6 minutes and 30 seconds
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-
-  console.log('this is the form', formData)
 
   useEffect(() => {
     const countdown = setInterval(() => {
@@ -40,42 +41,30 @@ const Verify = () => {
       }
     };
 
-    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-    
-      // Collecting the verification code from input fields
-      const code = inputRefs.current
-        .filter((input): input is HTMLInputElement => input !== null)
-        .map((input) => input.value)
-        .join("");
-    
-      // Updating formData with the verification code
-      const updatedFormData = {
-        ...formData,
-        verificationCode: code,  // Add verification code to the existing form data
-      };
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-      console.log('updated form', updatedFormData)
-    
-      try {
-        const response = await fetch("http://localhost:8080/api/auth/register", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({updatedFormData}),  // Send updated formData
-        });
-    
-        const data = await response.json();
-        console.log(data);
-        if (data.success) {
-          navigate('/next-route');  // Navigate to the next route upon successful verification
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      }
+    // Collecting the verification code from input fields
+    const code = inputRefs.current
+      .filter((input): input is HTMLInputElement => input !== null)
+      .map((input) => input.value)
+      .join("");
+
+    // Updating formData with the verification code
+    const updatedFormData: ApiData = {
+      ...formData,
+      verificationCode: code,  // Add verification code to the existing form data
     };
-    
+
+    const apiData: NavigateApiData = {
+      navigate: true,
+      destination: ScreenRoutes.ResetComplete,
+      navigation: navigation
+    }
+
+    apiInstance.post('auth/register', updatedFormData, apiData, 'Verify');
+  };
+
 
   const formatTime = () => {
     const minutes = Math.floor(timer / 60);

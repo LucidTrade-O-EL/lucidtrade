@@ -1,21 +1,39 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import "./ForgotPassword.css"; // Make sure to create a corresponding CSS file
 import abstractArt from "../../../../src/photos/ForgotPassword.png"; // Image path
 import logoIcon from "../../../../src/photos/transparent.svg"; // Image path
 import { useNavigate } from 'react-router-dom';
+import { API, ApiData, NavigateApiData } from '../../../api';
+import { ScreenRoutes } from '../../../App/Routes';
 
 function ForgotPassword() {
-  const navigate = useNavigate();
+  const apiInstance = new API();
+  const navigation = useNavigate();
   const [email, setEmail] = useState('');
 
   const handleEmailChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setEmail(e.target.value);
   };
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    setEmail('');
-    navigate('/set-password')
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    const target = event.target as typeof event.target & {
+      email: { value: string };
+      password: { value: string };
+    };
+
+    const emailData: ApiData = {
+      email: target.email.value,
+    };
+
+    const apiData: NavigateApiData = {
+      navigate: true,
+      destination: ScreenRoutes.SetPassword,
+      navigation: navigation
+    }
+
+    apiInstance.post('auth/forgot/password', emailData, apiData, 'ForgotPassword');
   };
 
   return (

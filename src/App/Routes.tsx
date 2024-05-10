@@ -8,16 +8,24 @@ import PasswordResetComplete from "../screens/Password/PasswordResetComplete/Pas
 import ForgotPassword from "../screens/Password/ForgetPassword/ForgotPassword";
 import Verify from "../screens/Verify/Verify";
 
+export enum ScreenRoutes {
+  Login = '/',
+  SignUp = '/signup',
+  ForgotPassword = '/forgot-password',
+  SetPassword= '/set-password',
+  ResetComplete = '/reset-complete',
+  Verify = '/verify'
+}
 
 const AppRoutes = () => (
   <Router>
     <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/set-password" element={<SetPassword />} />
-      <Route path="/reset-complete" element={<PasswordResetComplete />} />
-      <Route path="/verify" element={<Verify />} />
+      <Route path={ScreenRoutes.Login} element={<Login />} />
+      <Route path={ScreenRoutes.SignUp} element={<SignUp />} />
+      <Route path={ScreenRoutes.ForgotPassword} element={<ForgotPassword />} />
+      <Route path={ScreenRoutes.SetPassword} element={<SetPassword />} />
+      <Route path={ScreenRoutes.ResetComplete} element={<PasswordResetComplete />} />
+      <Route path={ScreenRoutes.Verify} element={<Verify />} />
     </Routes>
   </Router>
 );

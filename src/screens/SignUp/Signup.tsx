@@ -3,13 +3,14 @@ import "./SignUp.css"; // Make sure to create a corresponding CSS file
 import abstractArt from "../../../src/photos/LoginPic1.png";
 import logoIcon from "../../../src/photos/transparent.svg";
 import { useNavigate } from "react-router-dom";
+import { API, ApiData, NavigateApiData } from '../../api';
+import { ScreenRoutes } from '../../App/Routes';
 
 
 const SignUp = () => {
+  const apiInstance = new API();
+  const navigation = useNavigate();
 
-  const navigate = useNavigate();
-
-  // Function to handle form submission with proper TypeScript typing
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent the default form submission behavior
 
@@ -22,8 +23,7 @@ const SignUp = () => {
       confirmPassword: { value: string };
     };
 
-    // Creating an object to hold form data
-    const formData = {
+    const formData: ApiData = {
       firstName: target.firstName.value,
       lastName: target.lastName.value,
       email: target.email.value,
@@ -32,28 +32,14 @@ const SignUp = () => {
       confirmPassword: target.confirmPassword.value
     };
 
-
-    console.log("form Data", formData)
-    // Sending the POST request to your API
-    try {
-      const response = await fetch(' http://localhost:8080/api/auth/code', { 
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ phoneNumber: formData.phoneNumber })
-
-      });
-
-      const data = await response.json(); // Assuming the server responds with JSON
-      console.log(data); // Logging the response to the console
-      navigate('/verify', { state: formData });
-
-
-      // You can redirect the user or clear the form here, depending on your application's needs
-    } catch (error) {
-      console.error('Error:', error);
+    const apiData: NavigateApiData = {
+      navigate: true,
+      destination: ScreenRoutes.Verify,
+      navigation: navigation
     }
+
+    apiInstance.post('auth/code', formData, apiData, 'SignUp');
+
   };
 
   return (
