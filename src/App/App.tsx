@@ -1,6 +1,5 @@
-import React from "react";
-import "./App.css";
 import AppRoutes from "./Routes"; // Note the change here to match the new component name
+import "./App.css";
 
 function App() {
   return (

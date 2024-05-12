@@ -1,11 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import nameReducer from './reducers/firstNameReducer';
 import commonReducer from './reducers/commonReducer';
 
 const store = configureStore({
   reducer: {
     common: commonReducer,
-    name: nameReducer
   },
 });
 

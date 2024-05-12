@@ -1,5 +1,3 @@
-// src/Routes.tsx
-import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "../screens/Login/Login";
 import SignUp from "../screens/SignUp/Signup";
@@ -12,7 +10,7 @@ export enum ScreenRoutes {
   Login = '/',
   SignUp = '/signup',
   ForgotPassword = '/forgot-password',
-  SetPassword= '/set-password',
+  SetPassword = '/set-password',
   ResetComplete = '/reset-complete',
   Verify = '/verify'
 }

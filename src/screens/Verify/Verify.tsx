@@ -49,7 +49,6 @@ const Verify = () => {
       .map((input) => input.value)
       .join("");
 
-    // Updating formData with the verification code
     const updatedFormData: ApiData = {
       ...formData,
       verificationCode: code,  // Add verification code to the existing form data
