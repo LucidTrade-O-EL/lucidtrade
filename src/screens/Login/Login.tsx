@@ -1,13 +1,30 @@
-import React, { FormEvent } from 'react';
-import "./Login.css"; // Make sure to create a corresponding CSS file
-import abstractArt from "../../../src/photos/LoginPic1.png"; // Image path
-import logoIcon from "../../../src/photos/transparent.svg"; // Image path
+import { FormEvent, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+import { API, ApiData, NavigateApiData } from '../../api';
+import { RootState } from '../../Redux/store';
+import { ScreenRoutes } from '../../App/Routes';
+import { setApi, setNavigation } from '../../Redux/actions/commonActions';
 
-  const navigate = useNavigate();
-  // Function to handle form submission
+import abstractArt from "../../../src/photos/LoginPic1.png";
+import logoIcon from "../../../src/photos/transparent.svg";
+import "./Login.css";
+
+const Login = () => {
+  const { apiInstance } = useSelector((state: RootState) => state.common.apiInstance);
+  const { navigationInstance } = useSelector((state: RootState) => state.common.navigationInstance);
+
+  useEffect(() => {
+
+    const apiInstance = new API();
+    const navigation = useNavigate();
+
+    setApi(apiInstance);
+    setNavigation(navigation);
+
+  }, []);
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent the default form submission behavior
 
@@ -16,30 +33,18 @@ const Login = () => {
       password: { value: string };
     };
 
-    // Creating an object to hold login data
-    const loginData = {
+    const loginData: ApiData = {
       email: target.email.value,
       password: target.password.value
     };
 
-    // Sending the POST request to your API for login
-    try {
-      const response = await fetch('http://localhost:8080/api/auth/login', { 
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(loginData)
-      });
-
-      const data = await response.json(); // Assuming the server responds with JSON
-      console.log(data); // Logging the response to the console
-      navigate('/signup')
-
-      // Here you could handle redirection or update local state based on the response
-    } catch (error) {
-      console.error('Error:', error);
+    const apiData: NavigateApiData = {
+      navigate: true,
+      destination: ScreenRoutes.ResetComplete,
+      navigation: navigationInstance
     }
+
+    await apiInstance.post('auth/login', loginData, apiData, 'Login');
   };
 
   return (
@@ -54,11 +59,11 @@ const Login = () => {
         <form className="login-form-emailAndPassword" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <h2 className="EmailPassword">Email Address</h2>
-            <input name="email" type="email" placeholder="Email Address" required/>
+            <input name="email" type="email" placeholder="Email Address" required />
           </div>
           <div className="input-wrapper">
             <h2 className="EmailPassword">Password</h2>
-            <input name="password" type="password" placeholder="Password" required/>
+            <input name="password" type="password" placeholder="Password" required />
           </div>
 
           <div className="terms-container">

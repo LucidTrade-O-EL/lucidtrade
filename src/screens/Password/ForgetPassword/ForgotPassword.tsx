@@ -1,21 +1,42 @@
-import React, { useState } from 'react';
-import "./ForgotPassword.css"; // Make sure to create a corresponding CSS file
+import React, { FormEvent, useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import { ApiData, NavigateApiData } from '../../../api';
+import { ScreenRoutes } from '../../../App/Routes';
+import { RootState } from '../../../Redux/store';
+
 import abstractArt from "../../../../src/photos/ForgotPassword.png"; // Image path
 import logoIcon from "../../../../src/photos/transparent.svg"; // Image path
-import { useNavigate } from 'react-router-dom';
+import "./ForgotPassword.css"; // Make sure to create a corresponding CSS file
 
 function ForgotPassword() {
-  const navigate = useNavigate();
+  const { apiInstance } = useSelector((state: RootState) => state.common.apiInstance);
+  const { navigationInstance } = useSelector((state: RootState) => state.common.navigationInstance);
   const [email, setEmail] = useState('');
 
   const handleEmailChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setEmail(e.target.value);
   };
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    setEmail('');
-    navigate('/set-password')
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    const target = event.target as typeof event.target & {
+      email: { value: string };
+      password: { value: string };
+    };
+
+    const emailData: ApiData = {
+      email: target.email.value,
+    };
+
+    const apiData: NavigateApiData = {
+      navigate: true,
+      destination: ScreenRoutes.SetPassword,
+      navigation: navigationInstance
+    }
+
+    apiInstance.post('auth/forgot/password', emailData, apiData, 'ForgotPassword');
   };
 
   return (
