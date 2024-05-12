@@ -1,14 +1,17 @@
 import React, { FormEvent, useState } from 'react';
-import "./ForgotPassword.css"; // Make sure to create a corresponding CSS file
+import { useSelector } from 'react-redux';
+
+import { ApiData, NavigateApiData } from '../../../api';
+import { ScreenRoutes } from '../../../App/Routes';
+import { RootState } from '../../../Redux/store';
+
 import abstractArt from "../../../../src/photos/ForgotPassword.png"; // Image path
 import logoIcon from "../../../../src/photos/transparent.svg"; // Image path
-import { useNavigate } from 'react-router-dom';
-import { API, ApiData, NavigateApiData } from '../../../api';
-import { ScreenRoutes } from '../../../App/Routes';
+import "./ForgotPassword.css"; // Make sure to create a corresponding CSS file
 
 function ForgotPassword() {
-  const apiInstance = new API();
-  const navigation = useNavigate();
+  const { apiInstance } = useSelector((state: RootState) => state.common.apiInstance);
+  const { navigationInstance } = useSelector((state: RootState) => state.common.navigationInstance);
   const [email, setEmail] = useState('');
 
   const handleEmailChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
@@ -30,7 +33,7 @@ function ForgotPassword() {
     const apiData: NavigateApiData = {
       navigate: true,
       destination: ScreenRoutes.SetPassword,
-      navigation: navigation
+      navigation: navigationInstance
     }
 
     apiInstance.post('auth/forgot/password', emailData, apiData, 'ForgotPassword');

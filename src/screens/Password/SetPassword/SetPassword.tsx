@@ -1,14 +1,19 @@
 import React, { FormEvent, useState } from 'react';
-import "./SetPassword.css"; // Make sure to create a corresponding CSS file
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux'
+
+import { ApiData, NavigateApiData } from '../../../api';
+import { ScreenRoutes } from '../../../App/Routes';
+import { RootState } from '../../../Redux/store';
+
 import abstractArt from "../../../../src/photos/ForgotPassword.png"; // Image path
 import logoIcon from "../../../../src/photos/transparent.svg"; // Image path
-import { useNavigate, useLocation } from 'react-router-dom';
-import { API, ApiData, NavigateApiData } from '../../../api';
-import { ScreenRoutes } from '../../../App/Routes';
+import "./SetPassword.css"; // Make sure to create a corresponding CSS file
+
 
 function SetPassword() {
-  const apiInstance = new API();
-  const navigation = useNavigate();
+  const { apiInstance } = useSelector((state: RootState) => state.common.apiInstance);
+  const { navigationInstance } = useSelector((state: RootState) => state.common.navigationInstance);
   const [password, setPassword] = useState('');
   const [secondPassword, setSecondPassword] = useState('');
   const location = useLocation();
@@ -39,7 +44,7 @@ function SetPassword() {
     const apiData: NavigateApiData = {
       navigate: true,
       destination: ScreenRoutes.ResetComplete,
-      navigation: navigation
+      navigation: navigationInstance
     }
 
     apiInstance.post('auth/reset/password', resetData, apiData, 'ForgotPassword');

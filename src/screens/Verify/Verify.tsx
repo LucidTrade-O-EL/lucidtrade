@@ -1,21 +1,20 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  FormEvent,
-  ChangeEvent,
-} from "react";
-import "./Verify.css";
+import { useState, useEffect, useRef, FormEvent, ChangeEvent } from "react";
+import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import { ApiData, NavigateApiData } from "../../api";
+import { ScreenRoutes } from "../../App/Routes";
+import { RootState } from "../../Redux/store";
+
 import abstractArt from "../../../src/photos/LoginPic1.png";
 import logoIcon from "../../../src/photos/transparent.svg";
-import { useLocation, useNavigate } from "react-router-dom";
-import { API, ApiData, NavigateApiData } from "../../api";
-import { ScreenRoutes } from "../../App/Routes";
+import "./Verify.css";
+
 
 const Verify = () => {
-  const apiInstance = new API();
+  const { apiInstance } = useSelector((state: RootState) => state.common.apiInstance);
+  const { navigationInstance } = useSelector((state: RootState) => state.common.navigationInstance);
   const location = useLocation();
-  const navigation = useNavigate();
   const formData = location.state;
   const [timer, setTimer] = useState(390); // 6 minutes and 30 seconds
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
@@ -59,7 +58,7 @@ const Verify = () => {
     const apiData: NavigateApiData = {
       navigate: true,
       destination: ScreenRoutes.ResetComplete,
-      navigation: navigation
+      navigation: navigationInstance
     }
 
     apiInstance.post('auth/register', updatedFormData, apiData, 'Verify');

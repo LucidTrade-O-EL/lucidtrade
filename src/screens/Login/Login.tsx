@@ -1,14 +1,29 @@
-import React, { FormEvent } from 'react';
-import "./Login.css"; // Make sure to create a corresponding CSS file
-import abstractArt from "../../../src/photos/LoginPic1.png"; // Image path
-import logoIcon from "../../../src/photos/transparent.svg"; // Image path
+import { FormEvent, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
 import { API, ApiData, NavigateApiData } from '../../api';
+import { RootState } from '../../Redux/store';
 import { ScreenRoutes } from '../../App/Routes';
+import { setApi, setNavigation } from '../../Redux/actions/commonActions';
+
+import abstractArt from "../../../src/photos/LoginPic1.png";
+import logoIcon from "../../../src/photos/transparent.svg";
+import "./Login.css";
 
 const Login = () => {
-  const apiInstance = new API();
-  const navigation = useNavigate();
+  const { apiInstance } = useSelector((state: RootState) => state.common.apiInstance);
+  const { navigationInstance } = useSelector((state: RootState) => state.common.navigationInstance);
+
+  useEffect(() => {
+
+    const apiInstance = new API();
+    const navigation = useNavigate();
+
+    setApi(apiInstance);
+    setNavigation(navigation);
+
+  }, []);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent the default form submission behavior
@@ -26,7 +41,7 @@ const Login = () => {
     const apiData: NavigateApiData = {
       navigate: true,
       destination: ScreenRoutes.ResetComplete,
-      navigation: navigation
+      navigation: navigationInstance
     }
 
     await apiInstance.post('auth/login', loginData, apiData, 'Login');
