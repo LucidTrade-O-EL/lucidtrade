@@ -1,10 +1,8 @@
 import { useState, useEffect, useRef, FormEvent, ChangeEvent } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import { API, ApiData, NavigateApiData } from "../../api";
 import { ScreenRoutes } from "../../App/Routes";
-import { RootState } from "../../Redux/store";
 
 import abstractArt from "../../../src/photos/LoginPic1.png";
 import logoIcon from "../../../src/photos/transparent.svg";
@@ -12,7 +10,7 @@ import "./Verify.css";
 
 
 const Verify = () => {
-  const apiInstance = new API();
+  const apiInstance = API.getInstance();
   const navigation = useNavigate();
   const location = useLocation();
   const formData = location.state;

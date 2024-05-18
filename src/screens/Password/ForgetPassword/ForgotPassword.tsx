@@ -1,17 +1,15 @@
 import React, { FormEvent, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { API, ApiData, NavigateApiData } from '../../../api';
 import { ScreenRoutes } from '../../../App/Routes';
-import { RootState } from '../../../Redux/store';
 
 import abstractArt from "../../../../src/photos/ForgotPassword.png"; // Image path
 import logoIcon from "../../../../src/photos/transparent.svg"; // Image path
 import "./ForgotPassword.css"; // Make sure to create a corresponding CSS file
-import { useNavigate } from 'react-router-dom';
 
 function ForgotPassword() {
-  const apiInstance = new API();
+  const apiInstance = API.getInstance();
   const navigation = useNavigate();
   const [email, setEmail] = useState('');
 

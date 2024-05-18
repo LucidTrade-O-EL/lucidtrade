@@ -1,26 +1,16 @@
 import { FormEvent, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { API, ApiData, NavigateApiData } from '../../api';
-import { RootState } from '../../Redux/store';
 import { ScreenRoutes } from '../../App/Routes';
-import { setApi, setNavigation } from '../../Redux/actions/commonActions';
 
 import abstractArt from "../../../src/photos/LoginPic1.png";
 import logoIcon from "../../../src/photos/transparent.svg";
 import "./Login.css";
 
 const Login = () => {
-  const apiInstance = new API();
+  const apiInstance = API.getInstance();
   const navigation = useNavigate();
-
-  useEffect(() => {
-
-    setApi(apiInstance);
-    setNavigation(navigation);
-
-  }, []);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent the default form submission behavior

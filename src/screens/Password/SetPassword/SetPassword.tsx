@@ -1,10 +1,8 @@
 import React, { FormEvent, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux'
 
 import { API, ApiData, NavigateApiData } from '../../../api';
 import { ScreenRoutes } from '../../../App/Routes';
-import { RootState } from '../../../Redux/store';
 
 import abstractArt from "../../../../src/photos/ForgotPassword.png"; // Image path
 import logoIcon from "../../../../src/photos/transparent.svg"; // Image path
@@ -12,7 +10,7 @@ import "./SetPassword.css"; // Make sure to create a corresponding CSS file
 
 
 function SetPassword() {
-  const apiInstance = new API();
+  const apiInstance = API.getInstance();
   const navigation = useNavigate();
   const [password, setPassword] = useState('');
   const [secondPassword, setSecondPassword] = useState('');

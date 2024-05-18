@@ -1,18 +1,16 @@
 import { FormEvent } from 'react';
-import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { API, ApiData, NavigateApiData } from '../../api';
 import { ScreenRoutes } from '../../App/Routes';
-import { RootState } from '../../Redux/store';
 
 import abstractArt from "../../../src/photos/LoginPic1.png";
 import logoIcon from "../../../src/photos/transparent.svg";
 import "./SignUp.css"; // Make sure to create a corresponding CSS file
-import { useNavigate } from 'react-router-dom';
 
 
 const SignUp = () => {
-  const apiInstance = new API();
+  const apiInstance = API.getInstance();
   const navigation = useNavigate();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {

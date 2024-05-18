@@ -1,4 +1,4 @@
-import { NavigateFunction } from "react-router-dom";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 import { ScreenRoutes } from "./App/Routes";
 
 export interface NavigateApiData {
@@ -39,31 +39,39 @@ interface APIInterface {
 }
 
 export class API implements APIInterface {
+  private static instance: API;
+  private _baseUrl: string;
 
-  _baseUrl = 'http://localhost:8080/api/';
+  private constructor() {
+    this._baseUrl = 'http://localhost:8080/api/';
+  }
+
+  public static getInstance(): API {
+    if (!API.instance) {
+      API.instance = new API();
+    }
+    return API.instance;
+  }
 
   public async post(
     url: string,
     data: ApiData,
     navigate: NavigateApiData,
-    location: string) {
-
+    location: string
+  ) {
     try {
-
       const response = await fetch(`${this._baseUrl}${url}`, {
         method: ApiMethods.POST,
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       });
 
-      const responseData = await response.json(); // Assuming the server responds with JSON
+      const responseData = await response.json();
 
-      console.log(responseData); // Logging the response to the console
+      console.log(responseData);
       navigate.navigation(navigate.destination, { state: data });
-
-      // Here you could handle redirection or update local state based on the response
     } catch (error) {
       console.log(`Location: ${location}`);
       console.log(JSON.stringify(error));
