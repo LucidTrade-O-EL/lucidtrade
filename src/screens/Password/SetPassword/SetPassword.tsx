@@ -1,8 +1,8 @@
 import React, { FormEvent, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 
-import { ApiData, NavigateApiData } from '../../../api';
+import { API, ApiData, NavigateApiData } from '../../../api';
 import { ScreenRoutes } from '../../../App/Routes';
 import { RootState } from '../../../Redux/store';
 
@@ -12,12 +12,13 @@ import "./SetPassword.css"; // Make sure to create a corresponding CSS file
 
 
 function SetPassword() {
-  const { apiInstance } = useSelector((state: RootState) => state.common.apiInstance);
-  const { navigationInstance } = useSelector((state: RootState) => state.common.navigationInstance);
+  const apiInstance = new API();
+  const navigation = useNavigate();
   const [password, setPassword] = useState('');
   const [secondPassword, setSecondPassword] = useState('');
   const location = useLocation();
   const email = location.state.email;
+  console.log(`email: ${email}`)
 
 
   const handlePasswordChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
@@ -44,7 +45,7 @@ function SetPassword() {
     const apiData: NavigateApiData = {
       navigate: true,
       destination: ScreenRoutes.ResetComplete,
-      navigation: navigationInstance
+      navigation: navigation
     }
 
     apiInstance.post('auth/reset/password', resetData, apiData, 'ForgotPassword');

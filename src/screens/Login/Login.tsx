@@ -12,13 +12,10 @@ import logoIcon from "../../../src/photos/transparent.svg";
 import "./Login.css";
 
 const Login = () => {
-  const { apiInstance } = useSelector((state: RootState) => state.common.apiInstance);
-  const { navigationInstance } = useSelector((state: RootState) => state.common.navigationInstance);
+  const apiInstance = new API();
+  const navigation = useNavigate();
 
   useEffect(() => {
-
-    const apiInstance = new API();
-    const navigation = useNavigate();
 
     setApi(apiInstance);
     setNavigation(navigation);
@@ -41,7 +38,7 @@ const Login = () => {
     const apiData: NavigateApiData = {
       navigate: true,
       destination: ScreenRoutes.ResetComplete,
-      navigation: navigationInstance
+      navigation: navigation
     }
 
     await apiInstance.post('auth/login', loginData, apiData, 'Login');

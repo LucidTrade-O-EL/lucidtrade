@@ -1,18 +1,19 @@
 import { FormEvent } from 'react';
 import { useSelector } from 'react-redux';
 
-import { ApiData, NavigateApiData } from '../../api';
+import { API, ApiData, NavigateApiData } from '../../api';
 import { ScreenRoutes } from '../../App/Routes';
 import { RootState } from '../../Redux/store';
 
 import abstractArt from "../../../src/photos/LoginPic1.png";
 import logoIcon from "../../../src/photos/transparent.svg";
 import "./SignUp.css"; // Make sure to create a corresponding CSS file
+import { useNavigate } from 'react-router-dom';
 
 
 const SignUp = () => {
-  const { apiInstance } = useSelector((state: RootState) => state.common.apiInstance);
-  const { navigationInstance } = useSelector((state: RootState) => state.common.navigationInstance);
+  const apiInstance = new API();
+  const navigation = useNavigate();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent the default form submission behavior
@@ -38,7 +39,7 @@ const SignUp = () => {
     const apiData: NavigateApiData = {
       navigate: true,
       destination: ScreenRoutes.Verify,
-      navigation: navigationInstance
+      navigation: navigation
     }
 
     apiInstance.post('auth/code', formData, apiData, 'SignUp');
