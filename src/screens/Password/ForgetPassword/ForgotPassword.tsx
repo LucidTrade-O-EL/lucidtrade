@@ -20,6 +20,8 @@ function ForgotPassword() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent the default form submission behavior
 
+    setEmail('');
+
     const target = event.target as typeof event.target & {
       email: { value: string };
       password: { value: string };
@@ -31,7 +33,6 @@ function ForgotPassword() {
 
     const apiData: NavigateApiData = {
       navigate: true,
-      destination: ScreenRoutes.SetPassword,
       navigation: navigation
     }
 

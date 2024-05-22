@@ -3,7 +3,7 @@ import { ScreenRoutes } from "./App/Routes";
 
 export interface NavigateApiData {
   navigate: boolean,
-  destination: ScreenRoutes,
+  destination?: ScreenRoutes,
   navigation: NavigateFunction
 }
 
@@ -71,7 +71,9 @@ export class API implements APIInterface {
       const responseData = await response.json();
 
       console.log(responseData);
-      navigate.navigation(navigate.destination, { state: data });
+      if (navigate.destination) {
+        navigate.navigation(navigate.destination, { state: data });
+      }
     } catch (error) {
       console.log(`Location: ${location}`);
       console.log(JSON.stringify(error));
