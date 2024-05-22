@@ -1,23 +1,17 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  html, body {
-    height: 100%;
-  }
-  
-  #root { 
+  html,
+  body {
     height: 100%;
   }
 
-  .logo {
+  #root {
+    height: 100%;
+  }
+
+  .verify-logo {
     width: auto;
-    height: 400px;
-    align-items: flex-start;
-    margin-left: -10% ;
-  }  
+  }
 
-  .login-form {
+  .verify-form {
     background: var(--color-primary100);
     display: flex;
     flex-direction: column;
@@ -25,149 +19,186 @@
     height: 100%;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 
-  .login-form-emailAndPassword {
+  .verify-code {
     background: var(--color-primary100);
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: auto;
-    height: 100%;
     flex-direction: column;
     align-items: center;
   }
-  
+
   .logo-container {
     justify-content: flex-start;
     align-self: flex-start;
-    background-image: url('../../../src/photos/transparent.svg'); /* Adjust the path as necessary */
-    background-size: contain; /* This ensures the logo fits within the container without distortion */
+    background-image: url('../../../src/photos/transparent.svg');
+    /* Adjust the path as necessary */
+    background-size: contain;
+    /* This ensures the logo fits within the container without distortion */
     background-repeat: no-repeat;
-    background-position: center; /* Centers the logo within the container */
+    background-position: center;
+    /* Centers the logo within the container */
   }
 
-  .login-header img {
+  .verify-header img {
     margin-bottom: 10px;
   }
-  .login-header {
-    align-items: flex-start; /* Align items to the start of the flex container */
-    text-align: left; /* Ensure text aligns to the left */
-    width: 80%; /* Ensure the header takes the full width to allow text alignment to work */
+
+  .verify-header {
+    align-items: flex-start;
+    /* Align items to the start of the flex container */
+    text-align: left;
+    /* Ensure text aligns to the left */
+    width: 80%;
+    /* Ensure the header takes the full width to allow text alignment to work */
     margin-top: -10%;
     padding-bottom: 10px;
   }
-  
-  .login-header h1 {
+
+  .verify-header h1 {
     margin-bottom: 10px;
-    color: #000; /* Choose a color that fits your design */
-    font-size: 48px; /* Adjust the size as needed */
+    color: #000;
+    /* Choose a color that fits your design */
+    font-size: 48px;
+    /* Adjust the size as needed */
   }
-  
+
   .login-header p {
-    color: gray; /* Choose a color that fits your design */
-    font-size: 18px; /* Adjust the size as needed */
+    color: gray;
+    /* Choose a color that fits your design */
+    font-size: 18px;
+    /* Adjust the size as needed */
     margin-bottom: 30px;
   }
-  
+
   input {
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 15px;
-    font-size: 16px; /* Adjust the size as needed */
+    font-size: 16px;
+    /* Adjust the size as needed */
     margin-bottom: 15px;
-    justify-content: center ;
+    justify-content: center;
     align-self: center;
   }
-  
+
   .terms-container {
     display: flex;
     align-self: center;
     margin-bottom: 30px;
     padding-top: 10px;
-    align-items: flex-start; /* Aligns children to the start */
+    align-items: flex-start;
+    /* Aligns children to the start */
     width: 80%;
     font-size: 16px;
   }
 
-  
+
   .terms-container input[type="checkbox"] {
     margin-right: 10px;
   }
-  
-.login-button,
-.google-button {
-  padding: 15px;
-  border: none;
-  border-radius: 8px;
-  color: #fff;
-  background-color: #1A237E; /* Adjust the color to match your design */
-  font-size: 16px; /* Adjust the size as needed */
-  cursor: pointer;
-  margin-top: 20px; /* Adds space above the buttons */
-  width: 80%; /* Sets a consistent width for all buttons */
-  height: 54px; /* Ensures buttons have the same height */
-}
 
-.google-button {
-  background-color: #fff; /* Adjust for a different appearance than the 'Verify' button */
-  color: #1A237E;
-  border: 1px solid #1A237E; /* Now has a visible border */
-}
-  
+  .login-button,
+  .google-button {
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    background-color: #1A237E;
+    /* Adjust the color to match your design */
+    font-size: 16px;
+    /* Adjust the size as needed */
+    cursor: pointer;
+    margin-top: 20px;
+    /* Adds space above the buttons */
+    width: 80%;
+    /* Sets a consistent width for all buttons */
+    height: 54px;
+    /* Ensures buttons have the same height */
+  }
+
+  .google-button {
+    background-color: #fff;
+    /* Adjust for a different appearance than the 'Verify' button */
+    color: #1A237E;
+    border: 1px solid #1A237E;
+    /* Now has a visible border */
+  }
+
   .separator {
     text-align: center;
     margin: 20px 0;
     font-size: 14px;
     color: #999;
   }
-  
+
   .login-footer p {
-    color: #5E2A84; /* Adjust to match your design's color scheme */
-    font-size: 14px; /* Adjust the size as needed */
+    color: #5E2A84;
+    /* Adjust to match your design's color scheme */
+    font-size: 14px;
+    /* Adjust the size as needed */
   }
-  
+
   .login-footer a {
-    color: #5E2A84; /* Adjust to match your design's color scheme */
+    color: #5E2A84;
+    /* Adjust to match your design's color scheme */
     text-decoration: none;
     font-weight: bold;
   }
-  
-  .login-graphics {
-    display: none; /* Hide the graphics on smaller screens */
+
+  .verify-graphics {
+    display: none;
+    /* Hide the graphics on smaller screens */
   }
 
   .input-wrapper {
     display: flex;
-    flex-direction: row; /* Aligns the inputs horizontally */
-    justify-content: center; /* Centers the inputs within the wrapper */
-    gap: 10px; /* Adds a small gap between each input box */
-    width: 100%; /* Ensures the wrapper takes full width of its parent */
-    padding: 20px 0; /* Adds padding above and below the input row for better spacing */
+    flex-direction: row;
+    /* Aligns the inputs horizontally */
+    justify-content: center;
+    /* Centers the inputs within the wrapper */
+    gap: 10px;
+    /* Adds a small gap between each input box */
+    width: 100%;
+    /* Ensures the wrapper takes full width of its parent */
+    padding: 20px 0;
+    /* Adds padding above and below the input row for better spacing */
   }
-  
+
   .input-wrapper input {
-    width: 72px; /* Width of each input box */
-    height: 80px; /* Height of each input box */
-    text-align: center; /* Centers the text inside the input box */
-    font-size: 32px; /* Larger font size for better readability */
-    border-radius: 8px; /* Rounded corners for a smoother look */
-    border: 1px solid #ccc; /* Defines a subtle border for the inputs */
+    width: 72px;
+    /* Width of each input box */
+    height: 80px;
+    /* Height of each input box */
+    text-align: center;
+    /* Centers the text inside the input box */
+    font-size: 32px;
+    /* Larger font size for better readability */
+    border-radius: 8px;
+    /* Rounded corners for a smoother look */
+    border: 1px solid #ccc;
+    /* Defines a subtle border for the inputs */
   }
 
   .timer-resend {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%; /* Assuming the same width as your buttons for consistency */
-    margin: 20px; /* Additional spacing from inputs */
+    width: 80%;
+    /* Assuming the same width as your buttons for consistency */
+    margin: 20px;
+    /* Additional spacing from inputs */
   }
-  
+
   .timer {
     font-size: 16px;
     color: #333;
   }
-  
+
   .resend-button {
     padding: 10px 20px;
     background-color: #fff;
@@ -177,35 +208,42 @@
     cursor: pointer;
     font-size: 16px;
   }
-  
-  
+
+
   /* Ensure other styles are consistent with your overall design */
-  
-  
-  
+
+
+
   .EmailPassword {
-      font-size: 18px;
-      font-weight: 500;
-      font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: sans-serif;
   }
 
   .input-wrapper h2 {
-    margin: 0 0 10px ; /* Adjusts spacing, assuming you want some space above the input fields */
-    padding-left: 10%; /* Ensures there's no extra padding throwing off alignment */
+    margin: 0 0 10px;
+    /* Adjusts spacing, assuming you want some space above the input fields */
+    padding-left: 10%;
+    /* Ensures there's no extra padding throwing off alignment */
   }
-  
-  
+
+
   input[type="email"],
   input[type="password"] {
-    width: 80%; /* This makes the input fields take up 100% of the .input-wrapper's width. */
-    padding: 20px; /* Adjust padding for better aesthetics. */
-    margin-bottom: 10px; /* Adds space below each input field, if needed. */
+    width: 80%;
+    /* This makes the input fields take up 100% of the .input-wrapper's width. */
+    padding: 20px;
+    /* Adjust padding for better aesthetics. */
+    margin-bottom: 10px;
+    /* Adds space below each input field, if needed. */
     /* Other styles remain unchanged */
   }
 
   input[type="password"] {
-    flex-grow: 1; /* Ensure input takes available space */
-    padding-right: 40px; /* Space for the eye icon */
+    flex-grow: 1;
+    /* Ensure input takes available space */
+    padding-right: 40px;
+    /* Space for the eye icon */
   }
 
   .password-container {
@@ -213,33 +251,35 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%; /* Or specific width */
+    width: 100%;
+    /* Or specific width */
   }
-  
 
-  
+
+
   /* For larger screens, show the graphics */
   @media (min-width: 1024px) {
-    .login-container {
+    .verify-container {
       display: flex;
-      flex-direction: row; /* Ensure this is explicitly set, though it's the default */
+      flex-direction: row;
+      /* Ensure this is explicitly set, though it's the default */
       height: 100%;
       background-color: var(--color-primary100);
       justify-content: space-around;
     }
-  
-    .login-graphics {
+
+    .verify-graphics {
       display: block;
       height: 100%;
       width: 100%;
     }
-  
-    .login-graphics img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-bottom-left-radius: 120px;
-      }
-      
+
+    .verify-graphics img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-bottom-left-radius: 120px;
+      border-top-left-radius: 120px;
+    }
+
   }
-  

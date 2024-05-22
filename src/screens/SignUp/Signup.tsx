@@ -5,7 +5,7 @@ import { API, ApiData, NavigateApiData } from '../../api';
 import { ScreenRoutes } from '../../App/Routes';
 
 import abstractArt from "../../../src/photos/LoginPic1.png";
-import logoIcon from "../../../src/photos/transparent.svg";
+import logoIcon from "../../../src/photos/transparent.png";
 import "./SignUp.css"; // Make sure to create a corresponding CSS file
 
 
@@ -47,47 +47,54 @@ const SignUp = () => {
   return (
     <div className="signup-container">
       <div className="signup-form">
-        <header className="signup-header">
-          <img src={logoIcon} alt="Logo" className="logo" />
-          <h1>Welcome to LucidTrade</h1>
-          <p>Kindly fill in your details below to create an account</p>
+        <header>
+          <div className="signup-header">
+            <img src={logoIcon} alt="Logo" className="signup-logo" />
+            <div>
+              <p>Kindly fill in your details below to create an account</p>
+            </div>
+          </div>
         </header>
 
         <form className="signup-form-emailAndPassword" onSubmit={handleSubmit}>
-          <div className="input-wrapper">
+
+          <div className="signup-input-wrapper">
             <h2 className="EmailPassword">First Name</h2>
             <input name="firstName" type="text" placeholder="First Name" required />
           </div>
-          <div className="input-wrapper">
+          <div className="signup-input-wrapper">
             <h2 className="EmailPassword">Last Name</h2>
             <input name="lastName" type="text" placeholder="Last Name" required />
           </div>
-          <div className="input-wrapper">
+          <div className="signup-input-wrapper">
             <h2 className="EmailPassword">Email Address</h2>
             <input name="email" type="email" placeholder="Email Address" required />
           </div>
-          <div className="input-wrapper">
+          <div className="signup-input-wrapper">
             <h2 className="EmailPassword">Phone Number</h2>
             <input name="phoneNumber" type="text" placeholder="Phone Number" required />
           </div>
-          <div className="input-wrapper">
+          <div className="signup-input-wrapper">
             <h2 className="EmailPassword">Password</h2>
             <input name="password" type="password" placeholder="Password" required />
           </div>
-          <div className="input-wrapper">
+          <div className="signup-input-wrapper">
             <h2 className="EmailPassword">Confirm Password</h2>
             <input name="confirmPassword" type="password" placeholder="Confirm Password" required />
           </div>
 
-          <div className="terms-container">
+
+          {/*Weh have no terms and conditions for them to read. We will re-enable when we have written them*/}
+          {/* <div className="terms-container">
             <input type="checkbox" id="terms" />
             <label htmlFor="terms">I agree to terms & conditions</label>
+          </div> */}
+
+          <div className='signup-create-account-buttons'>
+            <button type="submit" className="signup-button">Create Account</button>
+            <div className="separator">Or</div>
+            <button type="button" className="signup-google-button">Create with Google</button>
           </div>
-
-          <button type="submit" className="signup-button">Create Account</button>
-
-          <div className="separator">Or</div>
-          <button type="button" className="google-button">Create with Google</button>
         </form>
 
         <footer className="signup-footer">

@@ -1,209 +1,244 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  html, body {
-    height: 100%;
-  }
-  
-  #root { 
-    height: 100%;
-  }
+  box-sizing: border-box;
+}
 
-  .logo {
-    width: auto;
-    height: 400px;
-    align-items: flex-start;
-    margin-left: -10% ;
-  }  
+html,
+body {
+  height: 100%;
+}
 
-  .login-form {
-    background: var(--color-primary100);
+#root {
+  height: 100%;
+}
+
+.login-logo {
+  width: auto;
+  align-items: flex-start;
+  margin-left: -10%;
+}
+
+.login-form {
+  background: var(--color-primary100);
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form-emailAndPassword {
+  background: var(--color-primary100);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: auto;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container {
+  justify-content: flex-start;
+  align-self: flex-start;
+  background-image: url('../../../src/photos/LoginPic1.png');
+  /* Adjust the path as necessary */
+  background-size: contain;
+  /* This ensures the logo fits within the container without distortion */
+  background-repeat: no-repeat;
+  background-position: center;
+  /* Centers the logo within the container */
+}
+
+.login-header img {
+  margin-bottom: 10px;
+  margin-top: 40px;
+}
+
+.login-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.login-header h1 {
+  margin-bottom: 10px;
+  color: #000;
+  /* Choose a color that fits your design */
+  font-size: 48px;
+  /* Adjust the size as needed */
+}
+
+.login-header p {
+  color: gray;
+  /* Choose a color that fits your design */
+  font-size: 18px;
+  /* Adjust the size as needed */
+  margin-bottom: 30px;
+}
+
+input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 15px;
+  font-size: 16px;
+  /* Adjust the size as needed */
+  margin-bottom: 15px;
+  justify-content: center;
+  align-self: center;
+}
+
+.terms-container {
+  display: flex;
+  align-self: center;
+  margin-bottom: 30px;
+  padding-top: 10px;
+  align-items: flex-start;
+  /* Aligns children to the start */
+  width: 80%;
+  font-size: 16px;
+}
+
+
+.terms-container input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.login-button,
+.login-google-button {
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: #5E2A84;
+  /* Adjust the color to match your design */
+  font-size: 16px;
+  /* Adjust the size as needed */
+  cursor: pointer;
+  margin-bottom: 15px;
+  /* Only for the login button */
+  width: 80%;
+  height: 54px;
+}
+
+.login-google-button {
+  background-color: #D14836;
+  /* Adjust the color to match Google's branding */
+}
+
+.separator {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 14px;
+  color: #999;
+}
+
+.login-footer p {
+  color: #5E2A84;
+  /* Adjust to match your design's color scheme */
+  font-size: 14px;
+  /* Adjust the size as needed */
+}
+
+.login-footer a {
+  color: #5E2A84;
+  /* Adjust to match your design's color scheme */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-graphics {
+  display: none;
+  /* Hide the graphics on smaller screens */
+}
+
+.login-buttons {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.login-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Aligns children to the start */
+  width: 100%;
+  /* Adjust based on your layout's needs */
+}
+
+.input-wrapper input {
+  width: 80%;
+  padding: 15px;
+}
+
+.EmailPassword {
+  font-size: 18px;
+  font-weight: 500;
+  font-family: sans-serif;
+}
+
+.login-input-wrapper h2 {
+  margin: 0 0 10px;
+  /* Adjusts spacing, assuming you want some space above the input fields */
+  padding-left: 10%;
+  /* Ensures there's no extra padding throwing off alignment */
+}
+
+
+input[type="email"],
+input[type="password"] {
+  width: 80%;
+  /* This makes the input fields take up 100% of the .input-wrapper's width. */
+  padding: 20px;
+  /* Adjust padding for better aesthetics. */
+  margin-bottom: 10px;
+  /* Adds space below each input field, if needed. */
+  /* Other styles remain unchanged */
+}
+
+input[type="password"] {
+  flex-grow: 1;
+  /* Ensure input takes available space */
+  padding-right: 40px;
+  /* Space for the eye icon */
+}
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  /* Or specific width */
+}
+
+
+
+/* For larger screens, show the graphics */
+@media (min-width: 1024px) {
+  .login-container {
     display: flex;
-    flex-direction: column;
-    width: 80%;
+    flex-direction: row;
+    /* Ensure this is explicitly set, though it's the default */
     height: 100%;
-    flex-direction: column;
-    align-items: center;
+    background-color: var(--color-primary100);
+    justify-content: space-around;
   }
 
-  .login-form-emailAndPassword {
-    background: var(--color-primary100);
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: auto;
-    height: 100%;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .logo-container {
-    justify-content: flex-start;
-    align-self: flex-start;
-    background-image: url('../../../src/photos/LoginPic1.png'); /* Adjust the path as necessary */
-    background-size: contain; /* This ensures the logo fits within the container without distortion */
-    background-repeat: no-repeat;
-    background-position: center; /* Centers the logo within the container */
-  }
-
-  .login-header img {
-    margin-bottom: 10px;
-  }
-  .login-header {
-    align-items: flex-start; /* Align items to the start of the flex container */
-    text-align: left; /* Ensure text aligns to the left */
-    width: 80%; /* Ensure the header takes the full width to allow text alignment to work */
-    margin-top: -10%;
-    padding-bottom: 10px;
-  }
-  
-  .login-header h1 {
-    margin-bottom: 10px;
-    color: #000; /* Choose a color that fits your design */
-    font-size: 48px; /* Adjust the size as needed */
-  }
-  
-  .login-header p {
-    color: gray; /* Choose a color that fits your design */
-    font-size: 18px; /* Adjust the size as needed */
-    margin-bottom: 30px;
-  }
-  
-  input {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 15px;
-    font-size: 16px; /* Adjust the size as needed */
-    margin-bottom: 15px;
-    justify-content: center ;
-    align-self: center;
-  }
-  
-  .terms-container {
-    display: flex;
-    align-self: center;
-    margin-bottom: 30px;
-    padding-top: 10px;
-    align-items: flex-start; /* Aligns children to the start */
-    width: 80%;
-    font-size: 16px;
-  }
-
-  
-  .terms-container input[type="checkbox"] {
-    margin-right: 10px;
-  }
-  
-  .login-button,
-  .google-button {
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    background-color: #5E2A84; /* Adjust the color to match your design */
-    font-size: 16px; /* Adjust the size as needed */
-    cursor: pointer;
-    margin-bottom: 15px; /* Only for the login button */
-    width: 80%;
-    height: 54px;
-  }
-  
-  .google-button {
-    background-color: #D14836; /* Adjust the color to match Google's branding */
-  }
-  
-  .separator {
-    text-align: center;
-    margin: 20px 0;
-    font-size: 14px;
-    color: #999;
-  }
-  
-  .login-footer p {
-    color: #5E2A84; /* Adjust to match your design's color scheme */
-    font-size: 14px; /* Adjust the size as needed */
-  }
-  
-  .login-footer a {
-    color: #5E2A84; /* Adjust to match your design's color scheme */
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
   .login-graphics {
-    display: none; /* Hide the graphics on smaller screens */
+    display: block;
+    height: 100%;
+    width: 100%;
   }
 
-  .input-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Aligns children to the start */
-    width: 100%; /* Adjust based on your layout's needs */
+  .login-graphics img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom-left-radius: 120px;
+    border-top-left-radius: 120px;
   }
 
-  .input-wrapper input {
-    width: 80%;
-    padding: 15px;
-  }
-  
-  .EmailPassword {
-      font-size: 18px;
-      font-weight: 500;
-      font-family: sans-serif;
-  }
-
-  .input-wrapper h2 {
-    margin: 0 0 10px ; /* Adjusts spacing, assuming you want some space above the input fields */
-    padding-left: 10%; /* Ensures there's no extra padding throwing off alignment */
-  }
-  
-  
-  input[type="email"],
-  input[type="password"] {
-    width: 80%; /* This makes the input fields take up 100% of the .input-wrapper's width. */
-    padding: 20px; /* Adjust padding for better aesthetics. */
-    margin-bottom: 10px; /* Adds space below each input field, if needed. */
-    /* Other styles remain unchanged */
-  }
-
-  input[type="password"] {
-    flex-grow: 1; /* Ensure input takes available space */
-    padding-right: 40px; /* Space for the eye icon */
-  }
-
-  .password-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%; /* Or specific width */
-  }
-  
-
-  
-  /* For larger screens, show the graphics */
-  @media (min-width: 1024px) {
-    .login-container {
-      display: flex;
-      flex-direction: row; /* Ensure this is explicitly set, though it's the default */
-      height: 100%;
-      background-color: var(--color-primary100);
-      justify-content: space-around;
-    }
-  
-    .login-graphics {
-      display: block;
-      height: 100%;
-      width: 100%;
-    }
-  
-    .login-graphics img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-bottom-left-radius: 120px;
-      }
-      
-  }
-  
+}

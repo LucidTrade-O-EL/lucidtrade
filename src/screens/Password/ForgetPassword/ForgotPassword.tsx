@@ -5,7 +5,7 @@ import { API, ApiData, NavigateApiData } from '../../../api';
 import { ScreenRoutes } from '../../../App/Routes';
 
 import abstractArt from "../../../../src/photos/ForgotPassword.png"; // Image path
-import logoIcon from "../../../../src/photos/transparent.svg"; // Image path
+import logoIcon from "../../../../src/photos/transparent.png"; // Image path
 import "./ForgotPassword.css"; // Make sure to create a corresponding CSS file
 
 function ForgotPassword() {
@@ -39,16 +39,25 @@ function ForgotPassword() {
   };
 
   return (
-    <div className="Forgot-container">
-      <div className="ForgotPassword">
-        <header className="header">
-          <img src={logoIcon} alt="Logo" className="logo" />
-          <h1>Forget Password</h1>
-          <p>Don’t worry, happens to all of us. Enter your email below to recover your password</p>
+    <div className="forgot-container">
+      <div className="forgotPassword">
+        <header className="forgot-password-header">
+          <div>
+            <img src={logoIcon} alt="Logo" className="forgot-password-logo" />
+          </div>
         </header>
 
-        <form className="ForgotPassword-form-emailAndPassword" onSubmit={handleSubmit}>
-          <div className="input-wrapper">
+        <div className='forgot-password-content'>
+          <div>
+            <h1>Forgot Password</h1>
+          </div>
+          <div>
+            <p>Don’t worry, happens to all of us. Enter your email below to recover your password</p>
+          </div>
+        </div>
+
+        <form className="forgotPassword-form-emailAndPassword" onSubmit={handleSubmit}>
+          <div className="forgot-password-input-wrapper">
             <h2 className="email">Email Address</h2>
             <input
               name="email"
@@ -63,7 +72,7 @@ function ForgotPassword() {
           <button type="submit" className="submit-button">Submit</button>
         </form>
       </div>
-      <div className="ForgotPassword-graphics">
+      <div className="forgotPassword-graphics">
         <img src={abstractArt} alt="Abstract Art" />
       </div>
     </div>

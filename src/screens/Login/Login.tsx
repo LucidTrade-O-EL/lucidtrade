@@ -5,7 +5,7 @@ import { API, ApiData, NavigateApiData } from '../../api';
 import { ScreenRoutes } from '../../App/Routes';
 
 import abstractArt from "../../../src/photos/LoginPic1.png";
-import logoIcon from "../../../src/photos/transparent.svg";
+import logoIcon from "../../../src/photos/transparent.png";
 import "./Login.css";
 
 const Login = () => {
@@ -27,7 +27,7 @@ const Login = () => {
 
     const apiData: NavigateApiData = {
       navigate: true,
-      destination: ScreenRoutes.ResetComplete,
+      destination: ScreenRoutes.Loading,
       navigation: navigation
     }
 
@@ -37,31 +37,41 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-form">
-        <header className="login-header">
-          <img src={logoIcon} alt="Logo" className="logo" />
-          <h1>Welcome Back</h1>
-          <p>Kindly fill in your details below to log in to your account</p>
+        <header>
+          <div className="login-header">
+            <div>
+              <img src={logoIcon} alt="Logo" className="login-logo " />
+            </div>
+            <div>
+              <h1>Welcome Back</h1>
+            </div>
+            <div>
+              <p>Kindly fill in your details below to log in to your account</p>
+            </div>
+          </div>
         </header>
 
         <form className="login-form-emailAndPassword" onSubmit={handleSubmit}>
-          <div className="input-wrapper">
+          <div className="login-input-wrapper">
             <h2 className="EmailPassword">Email Address</h2>
             <input name="email" type="email" placeholder="Email Address" required />
           </div>
-          <div className="input-wrapper">
+          <div className="login-input-wrapper">
             <h2 className="EmailPassword">Password</h2>
             <input name="password" type="password" placeholder="Password" required />
           </div>
 
-          <div className="terms-container">
+          {/*Weh have no terms and conditions for them to read. We will re-enable when we have written them*/}
+          {/* <div className="terms-container">
             <input type="checkbox" id="terms" />
             <label htmlFor="terms">I agree to terms & conditions</label>
+          </div> */}
+
+          <div className="login-buttons">
+            <button type="submit" className="login-button">Login</button>
+            <div className="separator">Or</div>
+            <button type="button" className="login-google-button">Login with Google</button>
           </div>
-
-          <button type="submit" className="login-button">Login</button>
-
-          <div className="separator">Or</div>
-          <button type="button" className="google-button">Login with Google</button>
         </form>
 
         <footer className="login-footer">

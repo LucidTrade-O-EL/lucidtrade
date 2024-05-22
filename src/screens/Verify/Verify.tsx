@@ -5,7 +5,7 @@ import { API, ApiData, NavigateApiData } from "../../api";
 import { ScreenRoutes } from "../../App/Routes";
 
 import abstractArt from "../../../src/photos/LoginPic1.png";
-import logoIcon from "../../../src/photos/transparent.svg";
+import logoIcon from "../../../src/photos/transparent.png";
 import "./Verify.css";
 
 
@@ -54,7 +54,7 @@ const Verify = () => {
 
     const apiData: NavigateApiData = {
       navigate: true,
-      destination: ScreenRoutes.ResetComplete,
+      destination: ScreenRoutes.Loading,
       navigation: navigation
     }
 
@@ -74,15 +74,24 @@ const Verify = () => {
     <div className="verify-container">
       <div className="verify-form">
         <header className="verify-header">
-          <img src={logoIcon} alt="Logo" className="logo" />
-          <h1>Verify that it’s you</h1>
-          <p>
-            Please check your inbox and enter the verification code you just
-            received on your email address ending with example.com.
-          </p>
+          <div className="centered-container">
+            <div>
+              <img src={logoIcon} alt="Logo" className="verify-logo" />
+            </div>
+            <div>
+              <h1>Verify that it’s you</h1>
+            </div>
+            <div>
+              <p>
+                Please check your inbox and enter the verification code you just
+                received on your email address ending with example.com.
+              </p>
+            </div>
+          </div>
+
         </header>
 
-        <form onSubmit={handleSubmit} className="verify-form-emailAndPassword">
+        <form onSubmit={handleSubmit} className="verify-code">
           <div className="input-wrapper">
             {Array.from({ length: 6 }).map((_, index) => (
               <input
@@ -110,7 +119,7 @@ const Verify = () => {
             </button>
           </div>
 
-          <button type="submit" className="verify-button">
+          <button type="submit" className="login-button">
             Verify
           </button>
           <button type="button" className="google-button">
