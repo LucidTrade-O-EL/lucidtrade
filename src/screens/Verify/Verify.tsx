@@ -56,7 +56,7 @@ const Verify = () => {
       navigate: true,
       destination: ScreenRoutes.Loading,
       navigation: navigation
-    }
+    };
 
     apiInstance.post('auth/register', updatedFormData, apiData, 'Verify');
   };
