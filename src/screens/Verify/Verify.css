@@ -15,7 +15,7 @@
     background: var(--color-primary100);
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     height: 100%;
     flex-direction: column;
     align-items: center;
@@ -55,7 +55,6 @@
     /* Ensure text aligns to the left */
     width: 80%;
     /* Ensure the header takes the full width to allow text alignment to work */
-    margin-top: -10%;
     padding-bottom: 10px;
   }
 
@@ -209,6 +208,10 @@
     font-size: 16px;
   }
 
+  .verify-button-container {
+    width: 100%;
+  }
+
 
   /* Ensure other styles are consistent with your overall design */
 
@@ -282,4 +285,25 @@
       border-top-left-radius: 120px;
     }
 
+  }
+
+  @media (max-height: 600px) {
+    .verify-button-container {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      padding: 1px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .input-wrapper input {
+      width: 50px;
+      height: 80px;
+      text-align: center;
+      font-size: 32px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+  }
   }

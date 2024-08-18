@@ -1,4 +1,4 @@
-import { NavigateFunction, useNavigate } from "react-router-dom";
+import { NavigateFunction } from "react-router-dom";
 import { ScreenRoutes } from "./App/Routes";
 
 export interface NavigateApiData {

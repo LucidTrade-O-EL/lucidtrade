@@ -14,7 +14,6 @@ body {
 .login-logo {
   width: auto;
   align-items: flex-start;
-  margin-left: -10%;
 }
 
 .login-form {
@@ -241,4 +240,22 @@ input[type="password"] {
     border-top-left-radius: 120px;
   }
 
+}
+
+@media (max-width: 950px) {
+  .login-container {
+    display: flex;
+    overflow-y: auto;
+  }
+
+  .login-logo {
+    width: auto;
+    align-items: flex-start;
+  }
+
+  .login-form {
+    width: 95%; /* Further adjust for small screens */
+    height: 100vh;
+    padding: 10px; /* Reduce padding */
+  }
 }

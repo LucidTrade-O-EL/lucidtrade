@@ -2,7 +2,6 @@ import React, { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { API, ApiData, NavigateApiData } from '../../../api';
-import { ScreenRoutes } from '../../../App/Routes';
 
 import abstractArt from "../../../../src/photos/ForgotPassword.png"; // Image path
 import logoIcon from "../../../../src/photos/transparent.png"; // Image path

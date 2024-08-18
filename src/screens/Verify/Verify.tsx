@@ -8,7 +8,6 @@ import abstractArt from "../../../src/photos/LoginPic1.png";
 import logoIcon from "../../../src/photos/transparent.png";
 import "./Verify.css";
 
-
 const Verify = () => {
   const apiInstance = API.getInstance();
   const navigation = useNavigate();
@@ -49,7 +48,7 @@ const Verify = () => {
 
     const updatedFormData: ApiData = {
       ...formData,
-      verificationCode: code,  // Add verification code to the existing form data
+      verificationCode: code, // Add verification code to the existing form data
     };
 
     const apiData: NavigateApiData = {
@@ -58,9 +57,8 @@ const Verify = () => {
       navigation: navigation
     };
 
-    apiInstance.post('auth/register', updatedFormData, apiData, 'Verify');
+    apiInstance.post("auth/register", updatedFormData, apiData, "Verify");
   };
-
 
   const formatTime = () => {
     const minutes = Math.floor(timer / 60);
@@ -79,7 +77,7 @@ const Verify = () => {
               <img src={logoIcon} alt="Logo" className="verify-logo" />
             </div>
             <div>
-              <h1>Verify that it’s you</h1>
+              <h2>Verify that it’s you</h2>
             </div>
             <div>
               <p>
@@ -88,7 +86,6 @@ const Verify = () => {
               </p>
             </div>
           </div>
-
         </header>
 
         <form onSubmit={handleSubmit} className="verify-code">
@@ -119,12 +116,14 @@ const Verify = () => {
             </button>
           </div>
 
-          <button type="submit" className="login-button">
-            Verify
-          </button>
-          <button type="button" className="google-button">
-            Cancel
-          </button>
+          <div className="verify-button-container">
+            <button type="submit" className="login-button">
+              Verify
+            </button>
+            <button type="button" className="google-button">
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
       <div className="verify-graphics">

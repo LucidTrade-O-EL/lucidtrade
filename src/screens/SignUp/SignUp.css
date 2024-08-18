@@ -240,3 +240,21 @@
       }
 
     }
+
+    @media (max-width: 950px) {
+      .signup-container {
+        display: flex;
+        overflow-y: auto;
+      }
+    
+      .signup-logo {
+        width: auto;
+        align-items: flex-start;
+      }
+    
+      .signup-form {
+        width: 95%; /* Further adjust for small screens */
+        height: 100vh;
+        padding: 10px; /* Reduce padding */
+      }
+    }
