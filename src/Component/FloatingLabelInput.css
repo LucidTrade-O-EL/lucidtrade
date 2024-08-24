@@ -1,0 +1,35 @@
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .input-label {
+    position: absolute;
+    top: 20%; /* Adjust as needed to vertically align the label */
+    left: 15px; /* Align with the input padding */
+    transform: translateY(-50%); /* Center the label vertically on the border */
+    background-color: white; /* White background to "cut" the line */
+    padding: 0 5px; /* Padding to extend the white background beyond the text */
+    color: #7e57c2;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 2; /* Ensure the label is in front of the input box */
+  }
+  
+  input {
+    padding: 12px 15px;
+    border: 2px solid #7e57c2;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1; /* Keep the input behind the label */
+  }
+  
+  input:focus {
+    border-color: #5e35b1;
+  }
+  

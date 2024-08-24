@@ -10,6 +10,7 @@ body {
     height: 100vh;
   }
   
+  
   .sidebar {
     width: 250px;
     background-color: #f4f4f4;
@@ -18,6 +19,8 @@ body {
     flex-direction: column;
     justify-content: space-between;
     border-right: 1px solid #ccc;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   
   .sidebar ul {
@@ -27,13 +30,21 @@ body {
   
   .sidebar li {
     margin: 15px 0;
+    padding: 10px;
     cursor: pointer;
+    border-radius: 4px;
   }
   
   .sidebar li.active {
-    font-weight: bold;
-    color: #007bff;
+    background-color: #1A237E; /* Selected state */
+    color: white;
   }
+  
+  .sidebar li.active:hover {
+    background-color: #303F9F; /* Slightly lighter hover color */
+    color: white;
+  }
+  
   
   .sidebar-bottom {
     display: flex;
@@ -173,5 +184,61 @@ body {
     display: flex;
     flex-grow: 1;
     margin-top: 80px; /* Adjust based on the height of your header */
+  }
+
+  .logo-container-main {
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+    padding-left: 25px;
+  }
+  
+  .logo {
+    width: 40px; /* Adjust the size as needed */
+    height: auto;
+    margin-right: 10px; /* Space between logo and text */
+  }
+  
+  .logo-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #000; /* Adjust the color as needed */
+  }
+
+
+  .input-container {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .input-label {
+    position: absolute;
+    top: 20%; /* Adjust as needed to vertically align the label */
+    left: 15px; /* Align with the input padding */
+    transform: translateY(-50%); /* Center the label vertically on the border */
+    background-color: white; /* White background to "cut" the line */
+    padding: 0 5px; /* Padding to extend the white background beyond the text */
+    color: #7e57c2;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 2; /* Ensure the label is in front of the input box */
+  }
+  
+  .portfolio-form input {
+    padding: 12px 15px;
+    border: 2px solid #7e57c2;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1; /* Keep the input behind the label */
+  }
+  
+  .portfolio-form input:focus {
+    border-color: #5e35b1;
   }
   

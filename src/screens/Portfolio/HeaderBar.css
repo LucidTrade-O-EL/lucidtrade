@@ -52,4 +52,29 @@
     height: 40px;
     border-radius: 50%;
   }
+
+  
+  .header-bar .header-greeting .greeting-text {
+    color: #000000; /* Black color for "Hi" */
+    font-size: 48px; /* Set font size */
+    font-weight: 700; /* Set font weight */
+  }
+  
+  .header-bar .header-greeting .username-color {
+    color: #1A237E; /* Color for the username */
+    font-size: 48px; /* Set font size */
+    font-weight: 700; /* Set font weight */
+  }
+
+  .welcome-text {
+    color: #000000; /* Black color for "Hi" */
+    font-size: 24px; /* Set font size */
+    font-weight: 300; /* Set font weight */
+  }
+  
+  .header-bar .header-profile .username-color-two {
+    color: #0000; /* Color for the username */
+    font-size: 80px; /* Set font size */
+    font-weight: 500; /* Set font weight */
+  }
   
