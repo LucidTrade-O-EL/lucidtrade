@@ -1,0 +1,73 @@
+.header-bar {
+  width: 100%; /* Full width */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #fff; /* White background for the header */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-greeting {
+  flex: 1;
+}
+
+.header-greeting h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.header-greeting p {
+  margin: 0;
+  color: #666;
+}
+
+.header-search {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.header-search input {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.header-profile {
+  flex: 0.5;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.header-bar .header-greeting .greeting-text {
+  color: #000000; /* Black color for "Hi" */
+  font-size: 48px; /* Set font size */
+  font-weight: 700; /* Set font weight */
+}
+
+.header-bar .header-greeting .username-color {
+  color: #1a237e; /* Color for the username */
+  font-size: 48px; /* Set font size */
+  font-weight: 700; /* Set font weight */
+}
+
+.welcome-text {
+  color: #000000; /* Black color for "Hi" */
+  font-size: 24px; /* Set font size */
+  font-weight: 300; /* Set font weight */
+}
+
+.header-bar .header-profile .username-color-two {
+  color: #0000; /* Color for the username */
+  font-size: 80px; /* Set font size */
+  font-weight: 500; /* Set font weight */
+}

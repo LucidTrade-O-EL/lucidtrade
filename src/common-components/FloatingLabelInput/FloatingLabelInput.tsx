@@ -1,5 +1,5 @@
-import React from 'react';
-import './FloatingLabelInput.css';
+import React from "react";
+import "./FloatingLabelInput.css";
 
 interface FloatingLabelInputProps {
   label: string;
@@ -8,10 +8,17 @@ interface FloatingLabelInputProps {
   placeholder?: string;
 }
 
-const FloatingLabelInput: React.FC<FloatingLabelInputProps> = ({ label, value, onChange, placeholder }) => {
+const FloatingLabelInput: React.FC<FloatingLabelInputProps> = ({
+  label,
+  value,
+  onChange,
+  placeholder,
+}) => {
   return (
     <div className="input-container">
-      <label className="input-label" htmlFor="floatingInput">{label}</label>
+      <label className="input-label" htmlFor="floatingInput">
+        {label}
+      </label>
       <input
         type="text"
         id="floatingInput"

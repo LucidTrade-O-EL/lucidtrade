@@ -8,6 +8,7 @@ import Verify from "../screens/Verify/Verify";
 import LoadingScreen from "../screens/Loading/LoadingScreen";
 import Home from "../screens/Home/Home";
 import Portfolio from "../screens/Portfolio/Portfolio";
+import Dashboard from "../common-components/Dashboard/Dashboard";
 
 export enum ScreenRoutes {
   Login = "/",
@@ -19,12 +20,12 @@ export enum ScreenRoutes {
   Loading = "/loading",
   Home = "/home",
   Portfolio = "/portfolio",
+  Dashboard = "/dashboard",
 }
 
 const AppRoutes = () => (
   <Router>
     <Routes>
-      <Route path={ScreenRoutes.Portfolio} element={<Portfolio />} />
       <Route path={ScreenRoutes.Login} element={<Login />} />
       <Route path={ScreenRoutes.Home} element={<Home />} />
       <Route path={ScreenRoutes.SignUp} element={<SignUp />} />
@@ -36,6 +37,8 @@ const AppRoutes = () => (
       />
       <Route path={ScreenRoutes.Verify} element={<Verify />} />
       <Route path={ScreenRoutes.Loading} element={<LoadingScreen />} />
+      <Route path={ScreenRoutes.Portfolio} element={<Portfolio />} />
+      <Route path={ScreenRoutes.Dashboard} element={<Dashboard />} />
     </Routes>
   </Router>
 );
