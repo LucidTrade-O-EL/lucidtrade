@@ -6,25 +6,34 @@ import PasswordResetComplete from "../screens/Password/PasswordResetComplete/Pas
 import ForgotPassword from "../screens/Password/ForgetPassword/ForgotPassword";
 import Verify from "../screens/Verify/Verify";
 import LoadingScreen from "../screens/Loading/LoadingScreen";
+import Home from "../screens/Home/Home";
+import Portfolio from "../screens/Portfolio/Portfolio";
 
 export enum ScreenRoutes {
-  Login = '/',
-  SignUp = '/signup',
-  ForgotPassword = '/forgot-password',
-  SetPassword = '/set-password',
-  ResetComplete = '/reset-complete',
-  Verify = '/verify',
-  Loading = '/loading'
+  Login = "/",
+  SignUp = "/signup",
+  ForgotPassword = "/forgot-password",
+  SetPassword = "/set-password",
+  ResetComplete = "/reset-complete",
+  Verify = "/verify",
+  Loading = "/loading",
+  Home = "/home",
+  Portfolio = "/portfolio",
 }
 
 const AppRoutes = () => (
   <Router>
     <Routes>
+      <Route path={ScreenRoutes.Portfolio} element={<Portfolio />} />
       <Route path={ScreenRoutes.Login} element={<Login />} />
+      <Route path={ScreenRoutes.Home} element={<Home />} />
       <Route path={ScreenRoutes.SignUp} element={<SignUp />} />
       <Route path={ScreenRoutes.ForgotPassword} element={<ForgotPassword />} />
       <Route path={ScreenRoutes.SetPassword} element={<SetPassword />} />
-      <Route path={ScreenRoutes.ResetComplete} element={<PasswordResetComplete />} />
+      <Route
+        path={ScreenRoutes.ResetComplete}
+        element={<PasswordResetComplete />}
+      />
       <Route path={ScreenRoutes.Verify} element={<Verify />} />
       <Route path={ScreenRoutes.Loading} element={<LoadingScreen />} />
     </Routes>
