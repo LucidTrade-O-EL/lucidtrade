@@ -1,14 +1,21 @@
-import logo from "../../photos/logo-transparent.svg"; // Import the logo image
-
-// Icons
 import { FaRegFolderOpen } from "react-icons/fa6";
 import { IoIosAnalytics } from "react-icons/io";
 import { MdSupportAgent } from "react-icons/md";
 import { CiLogout } from "react-icons/ci";
+import { useDispatch } from "react-redux";
 
+import logo from "../../photos/logo-transparent.svg";
+import { ScreenRoutes } from "../../App/Routes";
+import { setSelectedScreen } from "../../Redux/actions/dashboardNavigationActions";
 import "./Sidebar.css";
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
+
+  const handleNavigation = (screen: ScreenRoutes) => {
+    dispatch(setSelectedScreen(screen));
+  };
+
   return (
     <div className="sidebar">
       <div className="logo-container-main">
@@ -25,7 +32,10 @@ const Sidebar = () => {
         </span>
       </div>
       <ul>
-        <li className="active">
+        <li
+          className="active"
+          onClick={() => handleNavigation(ScreenRoutes.Portfolio)}
+        >
           <FaRegFolderOpen /> Portfolio
         </li>
         <li>
