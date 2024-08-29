@@ -7,6 +7,7 @@ import { RootState } from "../../Redux/store";
 import { ScreenRoutes } from "../../App/Routes";
 import Portfolio from "../../screens/Portfolio/Portfolio";
 import "./Dashboard.css";
+import PortfolioList from "../../screens/Portfolio/PortfolioList";
 
 const Dashboard = () => {
   const selectedScreen: ScreenRoutes = useSelector(
@@ -16,7 +17,7 @@ const Dashboard = () => {
   const renderScreen = () => {
     switch (selectedScreen) {
       case ScreenRoutes.Portfolio:
-        return <Portfolio />;
+        return <PortfolioList />;
       default:
         return <Portfolio />;
     }

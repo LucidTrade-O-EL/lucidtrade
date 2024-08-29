@@ -1,0 +1,172 @@
+.portfolio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+  }
+  
+  .portfolio-list-wrapper {
+    width: 95%;
+    max-width: 1600px;
+    background: white;
+    padding: 180px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header,
+  .portfolio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .period label {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+  .period input,
+  .portfolio-buttons button {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .portfolio {
+    display: flex;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden;
+  }
+  
+  .portfolio-sidebar {
+    width: 8px;
+    background-color: #1A237E;
+    border-radius: 20px;
+    margin: 20px;
+  }
+  
+  .portfolio-content {
+    padding: 20px;
+    flex-grow: 1;
+  }
+  
+  .portfolio-header h4 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .portfolio-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .portfolio-buttons button {
+    background: transparent;
+    border: 1px solid #007bff;
+    color: #007bff;
+  }
+  
+  .portfolio-buttons button:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .add-building-btn {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .view-more-btn {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .building-list {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  
+  .building-list .location,
+  .building-list .building-id,
+  .building-list .type,
+  .building-list .date,
+  .building-list .status {
+    padding: 10px 0;
+  }
+  
+  .status-success {
+    color: #fff;
+    background-color: rgba(0, 185, 41, 0.8);
+    padding: 5px 10px;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .status-failed {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .download-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .download-buttons button {
+    padding: 12px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .download-csv-btn {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .download-btn {
+    background-color: #6c757d;
+    color: #fff;
+  }
+
+  
+  .period {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Ensure alignment to the right */
+    gap: 10px; /* Add spacing between the inputs */
+  }
+  
+  .period label {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+  .period input {
+    margin-left: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 160px; /* Set a fixed width for better alignment */
+  }
+  
