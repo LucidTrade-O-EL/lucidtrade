@@ -13,7 +13,6 @@ const HeaderBar = ({ username = "Zakariya Veasy" }) => {
         <p className="welcome-text">Welcome to LucidTrade!</p>
       </div>
       <div className="header-search">
-        <input type="text" placeholder="Search for something..." />
       </div>
       <div className="header-profile">
         <CgProfile size={50} />

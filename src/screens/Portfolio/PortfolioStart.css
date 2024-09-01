@@ -1,0 +1,148 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .portfolio-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .header p {
+    color: #666;
+    margin-top: 5px;
+  }
+  
+  .portfolio-form {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 1
+  }
+  
+  .portfolio-form h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .portfolio-form p {
+    color: #777;
+    margin-bottom: 20px;
+  }
+  
+  .portfolio-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .portfolio-form button {
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .google-earth-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-image: url("../../photos/GoogleEarth.png");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+  }
+  
+  .main-content {
+    margin-left: 250px; /* Space for the sidebar */
+    flex-grow: 1;
+    padding: 40px;
+    position: relative;
+    background: transparent;
+  }
+  
+  .logo-container-main {
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+    padding-left: 25px;
+  }
+  
+  .logo {
+    width: 40px; /* Adjust the size as needed */
+    height: auto;
+    margin-right: 10px; /* Space between logo and text */
+  }
+  
+  .logo-text {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #000; /* Adjust the color as needed */
+  }
+  
+  .input-container {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .input-label {
+    position: absolute;
+    top: 20%; /* Adjust as needed to vertically align the label */
+    left: 15px; /* Align with the input padding */
+    transform: translateY(-50%); /* Center the label vertically on the border */
+    background-color: white; /* White background to "cut" the line */
+    padding: 0 5px; /* Padding to extend the white background beyond the text */
+    color: #7e57c2;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 2; /* Ensure the label is in front of the input box */
+  }
+  
+  .portfolio-form input {
+    padding: 12px 15px;
+    border: 2px solid #7e57c2;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1; /* Keep the input behind the label */
+  }
+  
+  .portfolio-form input:focus {
+    border-color: #5e35b1;
+  }
+  

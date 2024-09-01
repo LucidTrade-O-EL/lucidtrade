@@ -145,3 +145,77 @@ body {
 .portfolio-form input:focus {
   border-color: #5e35b1;
 }
+
+.portfolio-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Move the card higher on the page */
+  padding-top: 20px; /* Optional padding to adjust height */
+}
+
+.portfolio-form {
+  position: relative;
+  z-index: 10;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px; /* Increase width */
+  height: auto; /* Reduce height */
+  margin-left: 40px;
+  margin-bottom: 40px;
+}
+
+.location-search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.circle-search-button button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; 
+  background-color: purple;
+  color: white;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0; 
+}
+
+.circle-search-button:hover {
+  background-color: #6a0dad;
+}
+
+#map {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.confirm-location-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  margin-top: 10px; /* Add some space between location input and button */
+}
+
+.confirm-location-button:hover {
+  background-color: #45a049;
+}
