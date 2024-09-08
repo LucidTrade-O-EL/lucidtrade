@@ -1,18 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { useJsApiLoader, GoogleMap, Marker } from '@react-google-maps/api';
-import './Solar.css';
+import React, { useState, useEffect } from "react";
+import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
+import "./Solar.css";
+import { useSelector } from "react-redux";
+import { RootState } from "../../Redux/store";
+import { Cooridinates } from "../../Redux/reducers/dashboardNavigationReducer";
 
 // Define the findClosestBuilding function
-const findClosestBuilding = async (location: google.maps.LatLng, apiKey: string) => {
+const findClosestBuilding = async (
+  location: google.maps.LatLng,
+  apiKey: string
+) => {
   const params = new URLSearchParams({
-    'location.latitude': location.lat().toString(),
-    'location.longitude': location.lng().toString(),
-    'requiredQuality': 'HIGH', // Set quality to HIGH, MEDIUM, or LOW based on your needs
-    'key': apiKey,
+    "location.latitude": location.lat().toString(),
+    "location.longitude": location.lng().toString(),
+    requiredQuality: "HIGH", // Set quality to HIGH, MEDIUM, or LOW based on your needs
+    key: apiKey,
   });
 
-  const response = await fetch(`https://solar.googleapis.com/v1/buildingInsights:findClosest?${params}`);
-  
+  const response = await fetch(
+    `https://solar.googleapis.com/v1/buildingInsights:findClosest?${params}`
+  );
+
   if (!response.ok) {
     throw new Error(`Error fetching building insights: ${response.statusText}`);
   }
@@ -29,6 +37,10 @@ const Solar = () => {
     googleMapsApiKey: "AIzaSyACOSlepxS0umdp8HaDICPxXYzVX2jDick", // Replace with your API key
     libraries: [],
   });
+
+  const selectedAddress: Cooridinates = useSelector(
+    (state: RootState) => state.dashboard.selectedAddress
+  );
 
   useEffect(() => {
     if (isLoaded) {
@@ -58,10 +70,15 @@ const Solar = () => {
     <div className="solar-container">
       {isLoaded && (
         <GoogleMap
-          center={location}
+          center={selectedAddress}
           zoom={15}
           mapContainerClassName="map-container"
-          onClick={(e) => handleLocationChange({ lat: e.latLng?.lat()!, lng: e.latLng?.lng()! })}
+          onClick={(e) =>
+            handleLocationChange({
+              lat: e.latLng?.lat()!,
+              lng: e.latLng?.lng()!,
+            })
+          }
         >
           <Marker position={location} />
         </GoogleMap>
@@ -72,7 +89,10 @@ const Solar = () => {
           <p>Building Name: {buildingData.name || "Unknown"}</p>
           <p>Latitude: {buildingData.center?.latitude || "N/A"}</p>
           <p>Longitude: {buildingData.center?.longitude || "N/A"}</p>
-          <p>Max Sunshine Hours/Year: {buildingData.solarPotential?.maxSunshineHoursPerYear || "N/A"}</p>
+          <p>
+            Max Sunshine Hours/Year:{" "}
+            {buildingData.solarPotential?.maxSunshineHoursPerYear || "N/A"}
+          </p>
           {/* Add more data display as needed */}
         </div>
       ) : (

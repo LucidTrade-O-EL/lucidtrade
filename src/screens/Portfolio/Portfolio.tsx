@@ -1,16 +1,32 @@
 import React, { useState, useRef, useEffect } from "react";
 import SearchLocation from "../../common-components/SearchLocation/SerachLocation";
-import FloatingLabelInput from "./FloatingLabelInput";
+import FloatingLabelInput from "../../common-components/FloatingInput/FloatingLabelInput";
 import { FaSearch } from "react-icons/fa";
 import { useJsApiLoader } from "@react-google-maps/api";
 import "./Portfolio.css";
+import { useDispatch } from "react-redux";
+import { ScreenRoutes } from "../../App/Routes";
+import {
+  setSelectedAddress,
+  setSelectedScreen,
+} from "../../Redux/actions/dashboardNavigationActions";
 
 const Portfolio = () => {
   const [portfolioName, setPortfolioName] = useState("Portfolio 1");
   const [location, setLocation] = useState("");
+  const [coordinates, setCoordinates] = useState({
+    lat: -1,
+    lng: -1,
+  });
   const [searchLocation, setSearchLocation] = useState(""); // This state will trigger the map search
   const [isLocationConfirmed, setIsLocationConfirmed] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const dispatch = useDispatch();
+
+  const handleNavigation = (screen: ScreenRoutes) => {
+    dispatch(setSelectedScreen(screen));
+  };
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyACOSlepxS0umdp8HaDICPxXYzVX2jDick", // Replace with your API key
@@ -42,7 +58,14 @@ const Portfolio = () => {
   const handleLocationChange = (
     place: google.maps.places.PlaceResult | null
   ) => {
-    if (place && place.formatted_address) {
+    if (place && place.formatted_address && place?.geometry?.location) {
+      console.log(
+        `This is the place object: ${JSON.stringify(place.geometry.location)}`
+      );
+      setCoordinates({
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng(),
+      });
       setLocation(place.formatted_address);
     }
   };
@@ -54,13 +77,15 @@ const Portfolio = () => {
   const handleConfirmLocation = () => {
     console.log(`Location confirmed: ${location}`);
     setIsLocationConfirmed(true);
+    dispatch(setSelectedAddress(coordinates));
+    handleNavigation(ScreenRoutes.Solar);
   };
 
   const handleSearchClick = () => {
     setSearchLocation(location); // This triggers the map search when the button is clicked
   };
 
-  console.log("this is the location: ", searchLocation)
+  console.log("this is the location: ", searchLocation);
 
   return (
     <div className="portfolio-container">
@@ -83,7 +108,7 @@ const Portfolio = () => {
             ref={inputRef}
           />
           <button onClick={handleSearchClick} className="circle-search-button">
-            <FaSearch/>
+            <FaSearch />
           </button>
         </div>
         <button

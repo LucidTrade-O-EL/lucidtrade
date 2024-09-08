@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import FloatingLabelInput from "../../common-components/FloatingLabelInput/FloatingLabelInput";
-import GoogleEarth from "../../common-components/GoogleEarth/GoogleEarth";
+import GoogleEarth from "../../../common-components/GoogleEarth/GoogleEarth";
 
 import "./PortfolioStart.css";
+import FloatingLabelInput from "../../../common-components/FloatingLabelInput/FloatingLabelInput";
 
 const PortfolioStart = () => {
   const [portfolioName, setPortfolioName] = useState("Portfolio 1");

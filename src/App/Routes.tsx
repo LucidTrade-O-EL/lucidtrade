@@ -21,6 +21,7 @@ export enum ScreenRoutes {
   Home = "/home",
   Portfolio = "/portfolio",
   Dashboard = "/dashboard",
+  Solar = "/Solar"
 }
 
 const AppRoutes = () => (
