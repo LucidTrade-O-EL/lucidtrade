@@ -9,6 +9,7 @@ import Portfolio from "../../screens/Portfolio/Portfolio";
 import "./Dashboard.css";
 import PortfolioList from "../../screens/Portfolio/PortfolioList";
 import PortfolioStart from "../../screens/Portfolio/PortfolioStart";
+import Solar from "./Solar/Solar";
 
 const Dashboard = () => {
   const selectedScreen: ScreenRoutes = useSelector(
@@ -18,7 +19,7 @@ const Dashboard = () => {
   const renderScreen = () => {
     switch (selectedScreen) {
       case ScreenRoutes.Portfolio:
-        return <Portfolio />;
+        return <Solar />;
       default:
         return <Portfolio />;
     }
