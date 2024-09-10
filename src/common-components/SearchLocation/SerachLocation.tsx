@@ -75,7 +75,7 @@ const SearchLocation: React.FC<SearchLocationProps> = ({
           heading: mapOptions.heading,
           zoom: mapOptions.zoom,
         });
-  
+
         if (mapOptions.tilt < 67.5) {
           mapOptions.tilt += 2; // Faster tilt (increase the value)
         } else if (mapOptions.heading <= 360) {
@@ -87,7 +87,6 @@ const SearchLocation: React.FC<SearchLocationProps> = ({
       }, 50); // Adjust the timing to slow down further if needed
     }
   };
-  
 
   const initWebglOverlayView = (map: google.maps.Map) => {
     let scene: Scene,

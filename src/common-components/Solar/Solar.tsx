@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
-import "./Solar.css";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
+
 import { RootState } from "../../Redux/store";
 import { Cooridinates } from "../../Redux/reducers/dashboardNavigationReducer";
+import "./Solar.css";
 
-// Define the findClosestBuilding function
-const findClosestBuilding = async (
-  location: google.maps.LatLng,
-  apiKey: string
-) => {
+const findClosestBuilding = async (location: Cooridinates, apiKey: string) => {
   const params = new URLSearchParams({
-    "location.latitude": location.lat().toString(),
-    "location.longitude": location.lng().toString(),
+    "location.latitude": location.lat.toString(),
+    "location.longitude": location.lng.toString(),
     requiredQuality: "HIGH", // Set quality to HIGH, MEDIUM, or LOW based on your needs
     key: apiKey,
   });
@@ -32,26 +29,25 @@ const findClosestBuilding = async (
 const Solar = () => {
   const [location, setLocation] = useState({ lat: 36.191013, lng: -86.511166 });
   const [buildingData, setBuildingData] = useState<any>(null);
+  const coordinates: Cooridinates = useSelector(
+    (state: RootState) => state.dashboard.selectedAddress
+  );
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyACOSlepxS0umdp8HaDICPxXYzVX2jDick", // Replace with your API key
     libraries: [],
   });
 
-  const selectedAddress: Cooridinates = useSelector(
-    (state: RootState) => state.dashboard.selectedAddress
-  );
-
   useEffect(() => {
     if (isLoaded) {
-      fetchBuildingData(location);
+      fetchBuildingData();
     }
   }, [isLoaded]);
 
-  const fetchBuildingData = async (location: { lat: number; lng: number }) => {
+  const fetchBuildingData = async () => {
     try {
       const buildingInfo = await findClosestBuilding(
-        new google.maps.LatLng(location.lat, location.lng),
+        coordinates,
         "AIzaSyACOSlepxS0umdp8HaDICPxXYzVX2jDick"
       );
       setBuildingData(buildingInfo);
@@ -63,14 +59,13 @@ const Solar = () => {
 
   const handleLocationChange = (newLocation: { lat: number; lng: number }) => {
     setLocation(newLocation);
-    fetchBuildingData(newLocation);
   };
 
   return (
     <div className="solar-container">
       {isLoaded && (
         <GoogleMap
-          center={selectedAddress}
+          center={coordinates}
           zoom={15}
           mapContainerClassName="map-container"
           onClick={(e) =>

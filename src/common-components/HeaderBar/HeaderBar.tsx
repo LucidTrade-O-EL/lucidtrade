@@ -1,6 +1,5 @@
-import React from "react";
-import "./HeaderBar.css"; // Import CSS for styling
 import { CgProfile } from "react-icons/cg";
+import "./HeaderBar.css";
 
 const HeaderBar = ({ username = "Zakariya Veasy" }) => {
   return (
@@ -12,8 +11,7 @@ const HeaderBar = ({ username = "Zakariya Veasy" }) => {
         </h1>
         <p className="welcome-text">Welcome to LucidTrade!</p>
       </div>
-      <div className="header-search">
-      </div>
+      <div className="header-search"></div>
       <div className="header-profile">
         <CgProfile size={50} />
       </div>
