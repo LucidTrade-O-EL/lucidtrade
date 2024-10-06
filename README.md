@@ -1,46 +1,91 @@
-# Getting Started with Create React App
+# ☀️ Solar Potential demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> _This is not an officially supported Google product._
 
-## Available Scripts
+The [Solar API](https://developers.google.com/maps/documentation/solar/overview)
+offers many benefits to solar marketplace websites, solar installers, and solar SaaS designers.
 
-In the project directory, you can run:
+This is a demo app that showcases and displays the information from the Solar API into a map.
 
-### `npm start`
+## Before you begin
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You need a Google Cloud project with a billing account and the Maps JavaScript API and Solar API enabled.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To learn more, see [Set up in Cloud Console](https://developers.google.com/maps/documentation/javascript/cloud-setup).
 
-### `npm test`
+Additionally, you need a development environment with [Node.js](https://nodejs.org/en) installed.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Google Maps API key
 
-### `npm run build`
+This app requires a Google Maps API key to work, follow the [Use API Keys](https://developers.google.com/maps/documentation/javascript/get-api-key) guide to create a new one.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Once you have your API key, update the [`.env`](.env) file with your key.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```sh
+VITE_GOOGLE_MAPS_API_KEY="My Google Maps API key"
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Running the app
 
-### `npm run eject`
+First, run `npm install` to install the required dependencies.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Developer mode
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To start the app in developer mode, this allows hot-reloads.
+This means that every time you change a file, the app reloads itself automatically.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```sh
+# Run in developer mode.
+npm run dev
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Production mode
 
-## Learn More
+Starting in developer mode enables a lot of useful tools while developing, but for a production version we first need to build the app.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+# Build the app.
+npm run build
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Start the app.
+npm run start
+```
+
+## Deploying to Cloud Run
+
+One option to deploy your app is with [Cloud Run](https://cloud.google.com/run).
+It's easy to use and allows us to build and deploy scalable containerized apps written in any language on a fully managed platform.
+
+For some languages like Node.js, it infers the configuration and can [deploy from source directly](https://cloud.google.com/run/docs/deploying-source-code), without any additional configurations!
+This uploads your source, builds it with [Cloud Build](https://cloud.google.com/build), deploys it to Cloud Run, and starts the service with `npm run start`.
+All with a single command.
+
+```sh
+# Choose the Cloud location to deploy the app.
+export LOCATION="us-central1"
+
+# Build and deploy the app from source.
+gcloud run deploy "solar-potential" \
+  --source="." \
+  --region="$LOCATION" \
+  --allow-unauthenticated
+```
+
+## Checking your code
+
+You can use `npm run check` to do type checking and check for other common issues.
+You can also use `npm run check:watch` to continuously check your code when you save your changes.
+
+To check for styling and formatting issues, you can use `npm run lint`.
+To fix any lint issues, use `npm run format` to automatically format all the code base.
+
+## Tech stack
+
+- [Solar API](https://developers.google.com/maps/documentation/solar/overview): Get solar panel configurations, solar potential, and data layers.
+- [Google Maps](https://developers.google.com/maps/documentation/javascript/overview): Display a custom map with the Google Maps JavaScript API.
+- [Material Desgin 3](https://m3.material.io): Material Design 3 [web components](https://github.com/material-components/material-web#readme).
+- [SvelteKit](https://kit.svelte.dev): Compiler framework to develop declarative reactive web apps with [TypeScript](https://www.typescriptlang.org).
+- [Vite](https://vitejs.dev): Build tool with a fast development experience for modern web projects.
+- [Tailwind](https://tailwindcss.com): CSS framework for design and styling.
+- [ESLint](https://eslint.org): Statically analyze code to quickly find problems.
+- [Prettier](https://prettier.io): Opinionated code formatter.
